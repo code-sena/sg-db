@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 3a94ded5-72d6-48be-b830-ad2992a6d35f
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-fleet.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

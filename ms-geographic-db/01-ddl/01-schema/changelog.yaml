@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 6f56ed79-1eaa-4e4d-81e3-689ebab2a820
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-geographic.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

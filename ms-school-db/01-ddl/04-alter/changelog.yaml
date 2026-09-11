@@ -1,0 +1,31 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 683f5183-a2f5-489e-840f-3194910e9e6b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-school.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 55b86707-bbc3-4b38-bfc8-df06532f005e
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-school-campus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: d941c3c8-6506-4db1-b481-c61c6aae71cf
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-add-fk-course.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

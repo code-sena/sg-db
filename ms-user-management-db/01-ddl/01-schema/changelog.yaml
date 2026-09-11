@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: b148b0a4-589b-49a4-bb8f-0f10b174a24a
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-user-management.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

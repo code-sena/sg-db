@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 50f48d2e-9311-4b6a-b770-34ce19c980a6
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-exceptional-driver-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 3365d616-5c18-43f9-a538-0931be3e84b6
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-exceptional-route-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

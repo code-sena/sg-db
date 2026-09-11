@@ -1,0 +1,41 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 6cd56ef7-190e-4251-85c4-fe1a99ed227e
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-alert-type.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: a94ee031-944e-4d1b-9510-dc01aed6e2fc
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-alert.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 3748d2f8-cc77-489d-b294-7ff0db3424fd
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-create-table-alert-recipient.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 2d5f4221-a997-48ab-8792-18e07397177d
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-create-table-boarding.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

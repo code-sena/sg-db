@@ -1,0 +1,7 @@
+CREATE TABLE School.SchoolCampus (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    SchoolId UNIQUEIDENTIFIER NOT NULL,
+    Name VARCHAR(30) NOT NULL,
+    Address VARCHAR(30) NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

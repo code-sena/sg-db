@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: d72aa6cd-544d-49dc-99bf-ba37e09874d1
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-gps-location.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

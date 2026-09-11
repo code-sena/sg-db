@@ -1,0 +1,31 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: be39ee1c-ed89-45b8-a699-9a1c2f8e58d7
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-bus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 095a849f-e1b5-4a5b-a901-74fee3a8f0df
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-model.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 23490852-b87c-466a-9b60-cb9653c1bc8d
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-add-fk-driver-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

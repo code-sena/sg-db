@@ -1,0 +1,2 @@
+ALTER TABLE Fleet.Model
+    ADD CONSTRAINT FK_Model_Brand FOREIGN KEY (BrandId) REFERENCES Fleet.Brand(Id);

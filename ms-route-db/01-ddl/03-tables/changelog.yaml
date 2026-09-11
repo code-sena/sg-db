@@ -1,0 +1,71 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 98b7ae30-b710-453c-bffd-95afd0ff72a5
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: fb9ec627-da2b-408f-a296-ece4e5be2470
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-stop.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: cd7aeec0-ded5-476b-bf33-dfeb7c801183
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-create-table-route-stop.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dbd3a3d8-c272-47c8-acc4-08b3112d3fc6
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-create-table-route-bus-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4c002bfa-6303-429b-9260-f34aa1e3e75c
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-create-table-route-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 3ff7e80d-2130-4220-818d-3da4c130b7d5
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-create-table-route-schedule.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: e5bf9383-d9b8-4b49-a778-342ac4d0d260
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-create-table-route-execution.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

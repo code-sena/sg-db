@@ -1,0 +1,5 @@
+CREATE TABLE Iam.PermissionsRole (
+    Id TINYINT PRIMARY KEY IDENTITY,
+    PermissionsId TINYINT NOT NULL,
+    RoleId TINYINT NOT NULL
+);

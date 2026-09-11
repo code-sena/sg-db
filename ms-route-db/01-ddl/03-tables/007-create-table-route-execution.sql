@@ -1,0 +1,8 @@
+CREATE TABLE Route.RouteExecution (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    BusId UNIQUEIDENTIFIER NOT NULL,
+    DriverId UNIQUEIDENTIFIER NOT NULL,
+    StartDateTime DATETIME2 NOT NULL,
+    EndDateTime DATETIME2 NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

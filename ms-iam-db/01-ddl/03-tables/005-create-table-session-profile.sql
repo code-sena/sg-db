@@ -1,0 +1,8 @@
+CREATE TABLE Iam.SessionProfile (
+    Id INT PRIMARY KEY IDENTITY,
+    ProfileId UNIQUEIDENTIFIER NOT NULL,
+    DateStart DATETIME2 NOT NULL,
+    DateEnd DATETIME2 NOT NULL,
+    IPAddress VARCHAR(50) NOT NULL,
+    StatusSession VARCHAR(50) NOT NULL
+);

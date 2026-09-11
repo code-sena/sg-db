@@ -1,0 +1,41 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2bc48e37-b736-4b74-93f3-267b59bc1b46
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-person.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 172f458a-e61e-4f56-a1dd-fc38e64ca7ee
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-family.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4df3171f-3b46-473a-843d-76eef6528593
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-create-table-family-member.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 29f81b24-ae6b-4885-8c64-55e029b616f1
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-create-table-driver-license.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,7 @@
+CREATE TABLE Route.Route (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    CampuseId UNIQUEIDENTIFIER NOT NULL,
+    Name VARCHAR(30) NOT NULL,
+    TargetSector VARCHAR(30) NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

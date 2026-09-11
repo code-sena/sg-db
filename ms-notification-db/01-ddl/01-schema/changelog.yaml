@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: e09994bb-a929-4e27-9ce0-a4394f9c399b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-notification.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,6 @@
+CREATE TABLE Route.RouteBusAssignments (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    BusId UNIQUEIDENTIFIER NOT NULL,
+    RouteId UNIQUEIDENTIFIER NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

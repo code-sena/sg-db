@@ -1,0 +1,6 @@
+CREATE TABLE Notification.AlertType (
+    Id TINYINT PRIMARY KEY IDENTITY,
+    Name VARCHAR(30) NOT NULL,
+    Description VARCHAR(100) NOT NULL,
+    UrgencyLevel TINYINT NOT NULL
+);

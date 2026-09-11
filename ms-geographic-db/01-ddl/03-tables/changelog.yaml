@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1dd7466d-7682-4835-aa5f-22fb63b9fa5b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-city.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

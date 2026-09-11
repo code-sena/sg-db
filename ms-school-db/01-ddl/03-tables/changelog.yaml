@@ -1,0 +1,31 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: c6acb590-bb67-4213-880b-9a9478f3f3fd
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-school.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ed3c2538-fb0b-4b5a-a761-e53da88791bd
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-school-campus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 99a26f4e-a143-4b8e-b5f6-08239cc0fa98
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-create-table-course.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
