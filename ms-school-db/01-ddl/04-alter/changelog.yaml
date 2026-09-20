@@ -29,3 +29,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 6075590c-2645-471b-97b5-4c326d1fb558
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-add-column-profile.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
