@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+        id: 318f0510-f26e-4dc1-aa39-5f610f6ec715
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 001-idx-table-role.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
+  
+  - changeSet:
+        id: e8f107f6-2e91-4552-9c83-91fc96e0ef38
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 002-idx-table-profile.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true

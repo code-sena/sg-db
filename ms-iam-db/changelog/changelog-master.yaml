@@ -11,3 +11,7 @@ databaseChangeLog:
   - include:
       file: ../01-ddl/04-alter/changelog.yaml
       relativeToChangelogFile: true
+  
+  - include:
+      file: ../01-ddl/09-indexes/changelog.yaml
+      relativeToChangelogFile: true

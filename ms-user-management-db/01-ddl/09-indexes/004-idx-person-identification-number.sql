@@ -1,0 +1,2 @@
+CREATE INDEX IDX_Person_IdentificationNumber
+ON UserManagement.Person (IdentificationNumber);
