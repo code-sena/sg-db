@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 6431dfd1-7b62-43f5-ba7f-83cedb216fd2
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-roles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: f5c2736c-fb36-47b6-a6c0-3e365b0cca20
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-rol-super-admin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -39,3 +39,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: ea9380da-3e81-4d12-918b-9bb40cfc61cc
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-alter-column-campuse.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

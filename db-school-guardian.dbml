@@ -105,7 +105,6 @@ Table School [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	CityId uuid [not null, ref: > City.Id]
 	Logo (PENDING) [ not null ]
-	ProfileId uuid [not null, ref: > Profile.Id]
 	Name varchar(30) [ not null ]
 	Address varchar(30) [ not null ]
 	Phone int [ not null ]
