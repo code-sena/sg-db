@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: fb4b1d36-814e-4c77-9422-52e87b93b80e
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-audit.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

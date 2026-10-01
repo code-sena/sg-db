@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 28ab5008-7be6-4a2f-b58d-0db84c2b746b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-exceptional-driver-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 9422d457-203c-4b5b-9383-dd7446a5d729
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-exceptional-route-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,51 @@
+databaseChangeLog:
+
+  - changeSet:
+        id: b8dfb563-df1f-451c-b77d-c68ada0ff41a
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 001-idx-person-email.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
+
+  - changeSet:
+        id: 6bc0f5d2-0a34-404d-9048-fabe54516275
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 002-idx-person-name.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
+  
+  - changeSet:
+        id: c357afba-7200-4d16-8ad7-b9ff54022019
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 003-idx-person-last-name.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
+
+  - changeSet:
+        id: dfb85f72-b1d5-4883-ae4a-cc6f82066a52
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 004-idx-person-identification-number.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
+
+  - changeSet:
+        id: 75c09beb-0a44-4704-95ae-167bf63744c3
+        author: Juan Chala
+        changes:
+          - sqlFile:
+              path: 005-idx-person-phone.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true

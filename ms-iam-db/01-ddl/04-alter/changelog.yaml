@@ -1,0 +1,51 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 255d267d-0396-4ff2-92db-0323d8bf8f25
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-permissions-role.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: e1922f83-d8cb-4274-888c-d3241280706f
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-profile.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: c02eaae4-64a0-405a-82e5-0f613c03910d
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-add-fk-session-profile.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 70e5808d-7e47-4e2e-8063-ba2bb43ddd33
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-add-fk-profile-person.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ea9380da-3e81-4d12-918b-9bb40cfc61cc
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-alter-column-campuse.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

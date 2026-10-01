@@ -1,0 +1,5 @@
+CREATE TABLE Iam.Permissions (
+    Id TINYINT PRIMARY KEY IDENTITY,
+    TypePermissions VARCHAR(100) NOT NULL,
+    Description VARCHAR(150) NOT NULL
+);

@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 564d8129-594e-4179-b635-10a6a2790b65
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-gps-device.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 03e689ae-4f28-495b-9420-9e0dc54c2231
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-gps-location.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

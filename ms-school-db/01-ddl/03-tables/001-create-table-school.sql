@@ -1,0 +1,12 @@
+CREATE TABLE School.School (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    CityId UNIQUEIDENTIFIER NOT NULL,
+    Logo VARBINARY(MAX) NOT NULL,
+    Name VARCHAR(30) NOT NULL,
+    Address VARCHAR(30) NOT NULL,
+    Phone INT NOT NULL,
+    Email VARCHAR(50) NOT NULL,
+    Website VARCHAR(100) NULL,
+    Theme VARCHAR(20) NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

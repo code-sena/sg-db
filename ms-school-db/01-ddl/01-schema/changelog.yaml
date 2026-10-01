@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: b9885e8b-e9cb-4964-b51c-4d64e5fd2998
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-school.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

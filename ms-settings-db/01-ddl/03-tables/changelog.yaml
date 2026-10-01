@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: cbd75dc6-e3d6-4205-be95-34f5159aae7b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-security-settings.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 1280b6d7-2ca3-48fc-9e14-6db66700399d
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-password-policies.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

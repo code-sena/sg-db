@@ -1,0 +1,7 @@
+CREATE TABLE Route.RouteStop (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    RouteId UNIQUEIDENTIFIER NOT NULL,
+    StopId UNIQUEIDENTIFIER NOT NULL,
+    OrderSequence INT NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

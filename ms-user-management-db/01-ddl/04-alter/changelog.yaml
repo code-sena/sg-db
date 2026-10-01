@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: ffd3b56d-84d4-4be1-aec8-1182b3b7f5d9
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-family-member.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 65008670-5362-4c6c-af15-a7250ce8dfe7
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-driver-license.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

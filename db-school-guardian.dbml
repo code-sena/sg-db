@@ -1,0 +1,366 @@
+TableGroup Iam [color: #e74c3c] {
+    Permissions
+    PermissionsRole
+    Profile
+    Role
+    SessionProfile
+}
+
+TableGroup UserManagement [color: #3498db] {
+    DriverLicense
+    Family
+    FamilyMember
+    Person
+}
+
+TableGroup School [color: #2ecc71] {
+    School
+    SchoolCampus
+}
+
+TableGroup Geographic [color: #16a085] {
+	City
+}
+
+TableGroup Gps [color: #f1c945] {
+    GpsDevice
+    GpsLocation
+}
+
+TableGroup Route [color: #f39c12] {
+    Route
+    RouteBusAssignments
+    RouteStudentAssignments
+    RouteStop
+    Stop
+	RouteSchedule
+	RouteExecution
+}
+
+TableGroup Bus [color: #9b59b6] {
+    Bus
+    Brand
+    Model
+}
+
+TableGroup Notification [color: #1abc9c] {
+    Boarding
+	Alert
+    AlertType
+	AlertRecipient
+}
+
+TableGroup Exceptional [color: #34495e] {
+    ExceptionalDriverUsage
+    ExceptionalRouteUsage
+}
+
+TableGroup Configuration [color: #95a5a6] {
+	PasswordPolicies
+    SecuritySettings
+}
+
+TableGroup Audit [color: #7f1c8d] {
+	Audit
+	LogErrors
+}
+
+Table Person [headercolor: #175e7a] {
+	Id uuid [ pk, not null ]
+	Name varchar(50) [ not null ]
+	LastName varchar(50) [ not null ]
+	IdentificationType Identificationtype [ not null, default: TI ]
+	IdentificationNumber varchar(20) [ not null ]
+	Email varchar(50) [ not null ]
+	Phone int [ not null ]
+	ResidenceAddress varchar(50) [ not null ]
+	DateBirth date [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Role [headercolor: #175e7a] {
+	ID tinyint [ pk, not null ]
+	Name varchar(20) [ not null, unique ]
+	Description varchar(100) [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Family [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	Name varchar(50) [ not null ]
+	Observations varchar(100) [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table FamilyMember [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	FamilyId uuid [not null, ref: > Family.Id]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	RelationshipType RelationshipType [ default: PARENT]
+	// Note: RelationshipType can be PARENT and STUDENT
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table School [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	CityId uuid [not null, ref: > City.Id]
+	Logo (PENDING) [ not null ]
+	Name varchar(30) [ not null ]
+	Address varchar(30) [ not null ]
+	Phone int [ not null ]
+	Email varchar(50) [ not null ]
+	Website varchar(100) [ null ]
+	Theme varchar(20) [ null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Boarding [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	RouteExecutionId uuid [not null, ref: > RouteExecution.Id]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	RouteStopId uuid [not null, ref: > RouteStop.Id]
+	DateTime datetime2 [ not null ]
+	BoardingType BoardingType [ not null, default: ON_BOARD ]
+
+    Note: 'DateTime is automatically generated
+           BoardingType can be ON_BOARD or OFF_BOARD '
+}
+
+Table AlertType [headercolor: #175e7a] {
+	Id tinyint [ pk, increment ]
+	Name varchar(30) [ not null ]
+	Description varchar(100) [ not null ]
+	UrgencyLevel tinyint [ not null ]
+}
+
+Table Alert [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	RouteExecutionId uuid [not null, ref: > RouteExecution.Id]
+	AlertTypeId tinyint [not null, ref: > AlertType.Id]
+	ProfileId uuid [ not null, ref: > Profile.Id]
+	DateTime datetime2 [ not null ]
+	Description varchar(100)
+	AcknowledgedAt datetime2 [ null ]
+}
+
+Table AlertRecipient [headercolor: #175e7a] {
+	ID uuid [ pk ]
+	AlertId uuid [not null, ref: > Alert.Id]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	DateTimeRead datetime2 [ not null ]
+}
+
+Table Bus [headercolor: #175e7a] {
+	Id uuid [ pk, not null ]
+	CampusId uuid [not null, ref: > SchoolCampus.Id]
+	SoatValidity date [ not null ]
+	GpsDeviceId uuid [not null, ref: > GpsDevice.Id]
+	Capacity tinyint [ not null ]
+	Plate varchar(15) [ not null ]
+	ModelId tinyint [not null, ref: > Model.Id]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Brand [headercolor: #175e7a] {
+	Id tinyint [ pk ]
+	Name varchar(30)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Model [headercolor: #175e7a] {
+	Id tinyint [ pk ]
+	BrandId tinyint [not null, ref: > Brand.Id]
+	Name varchar(30)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table DriverAssignemts [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	BusId  uuid [ not null, ref: > Bus.Id ]
+	AssignedFrom date [ not null ]
+	AssignedTo date [ null ]
+}
+
+Table Stop [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	CityId uuid [not null, ref: > City.Id]
+	SchoolId uuid [not null, ref: > School.Id]
+	Address varchar(30)
+	Longitude decimal(12,2)
+	Latitude decimal(12,2)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Route [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	CampusId uuid [not null, ref: > SchoolCampus.Id]
+	Name varchar(30) [ not null ]
+	TargetSector varchar(30) [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table City [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	Name varchar(40)
+	Country varchar(30)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table RouteStudentAssignments [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	RouteStopId uuid [not null, ref: > RouteStop.Id]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table RouteSchedule [headercolor: #175e71] {
+	Id uuid [ pk ]
+	RouteBusAssignmentsId uuid [ not null, ref: > RouteBusAssignments.Id ]
+	DayOfWeek DayOfWeek [ not null, default: MONDAY ]
+	// Note: DayOfWeek can be MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+	Direction varchar(10) [ not null ]
+	StartTime time [ not null ]
+	Status Status [ not null, default: ACTIVE ]
+}
+
+Table RouteExecution [headercolor: #875e71] {
+	ID uuid [ pk ]
+	// RouteScheduleId uuid [ not null, ref: > RouteSchedule.Id ]
+	BusId uuid [ not null, ref: > Bus.Id]
+	DriverId uuid [ not null, ref: > Profile.Id]
+	StartDateTime datetime2 [ not null ]
+	EndDateTime datetime2 [ not null ]
+	Status Status [ not null, default: ACTIVE ]
+}
+
+Table RouteStop [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	RouteId uuid [not null, ref: > Route.Id]
+	StopId uuid [not null, ref: > Stop.Id]
+	OrderSequence int [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table RouteBusAssignments [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	BusId uuid [not null, ref: > Bus.Id]
+	RouteId uuid [not null, ref: > Route.Id]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table DriverLicense [headercolor: #175e7a] {
+	ID uuid [ pk ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	LicenseNumber varchar(20) [ not null ]
+	LicenseExpirationDate date [ not null ]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table Profile [headercolor: #175e7a] {
+	Id uuid [ pk, not null ]
+	PersonId uuid [ not null, ref: > Person.Id ]
+	CampuseId uuid [not null, ref: > SchoolCampus.Id]
+	PasswordHash varchar(100) [ not null ]
+    RoleId tinyint [not null, ref: > Role.Id]
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table ExceptionalDriverUsage [headercolor: #175e7a] {
+	Id uuid [ pk, not null ]
+	BusId uuid [not null, ref: > Bus.Id]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	DateTime datetime2 [ not null ]
+	Reason varchar(200) [ not null ]
+}
+
+Table ExceptionalRouteUsage [headercolor: #175e7a] {
+	Id uuid [ pk, not null ]
+	ProfileId uuid [ not null ] [not null, ref: > Profile.Id]
+	RouteId uuid [not null, ref: > Route.Id]
+	StartDateTime datetime2 [ not null ]
+	EndDateTime datetime2 [ not null ]
+	Reason varchar(200) [ not null ]
+}
+
+Table GpsDevice [headercolor: #175e7a] {
+	ID uuid [ pk ]
+	Imei varchar(20)
+	LastConnection datetime
+	GpsStatus boolean [ not null ]
+}
+
+Table GpsLocation [headercolor: #175e7a] {
+	ID uuid [ pk ]
+	GpsDeviceID uuid [not null, ref: > GpsDevice.ID]
+	Latitude decimal(10,7)
+	Longitude decimal(10,7)
+	Speed decimal(8,2)
+	Course decimal(8,2)
+	DateTime datetime
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table SchoolCampus [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	SchoolId uuid [not null, ref: > School.Id]
+	Name varchar(30)
+	Address varchar(30)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table SecuritySettings [headercolor: #175e7a] {
+	Id tinyint [ pk, increment, not null ]
+	NameSettings varchar(100) [ not null, unique ]
+	ValueSettings varchar(100) [ not null ]
+	Description varchar(150) [ not null ]
+}
+
+Table PasswordPolicies [headercolor: #175e7a] {
+	Id tinyint [ pk, increment, not null ]
+	MinLongitude tinyint [ not null ]
+	MaxLongitude tinyint [ not null ]
+	RequiresCapitalLetters tinyint [ not null ]
+	RequiresNumbers tinyint [ not null ]
+	RequiresSymbols tinyint [ not null ]
+	ExpirationDays tinyint [ not null ]
+}
+
+Table SessionProfile [headercolor: #175e7a] {
+	ID int [ pk, increment, not null ]
+	ProfileID uuid [not null, ref: > Profile.ID]
+	DateStart datetime2 [ not null ]
+	DateEnd datetime2 [ not null ]
+	IPAddress varchar(50) [ not null ]
+	StatusSession varchar(50) [ not null ]
+}
+
+Table Audit [headercolor: #175e7a] {
+	Id bigint [ pk, increment, not null ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	Action varchar(255) [ not null ]
+	Date datetime2 [ not null ]
+	Description varchar(500) [ not null ]
+	IPAddress varchar(50) [ not null ]
+	Application varchar(255) [ not null ]
+}
+
+Table PermissionsRole [headercolor: #175e7a] {
+	Id tinyint [ pk, increment, not null ]
+	PermissionsId tinyint [not null, ref: > Permissions.Id]
+	RoleId tinyint [ not null, ref: > Role.Id ]
+}
+
+Table Permissions [headercolor: #175e7a] {
+	Id tinyint [ pk, increment, not null ]
+	TypePermissions varchar(100) [ not null ]
+	Description varchar(150) [ not null ]
+}
+
+Table LogErrors [headercolor: #175e7a] {
+	Id bigint [ pk, increment, not null ]
+	TypeError varchar(100) [ not null ]
+	Description varchar(150) [ not null ]
+	IPAddress varchar(50) [ not null ]
+	OccurredAt datetime2 [ not null ]
+}

@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 9a84f458-f5a9-42bc-a8d4-c69a1fd538cf
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-gps.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

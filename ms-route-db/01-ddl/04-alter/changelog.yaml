@@ -1,0 +1,71 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 0480429e-468b-4127-a06d-bf4975a6552b
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 9bd695d4-7b96-4a19-a0e6-0324efbc3137
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-stop.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: e7f06185-55cf-43ce-a433-be7b0e2a2f42
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-add-fk-route-stop.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: d00d3e1f-b876-425b-be66-77ba7066dbb7
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-add-fk-route-bus-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 6cbf17b6-2823-48d6-9e1c-fa9fff1a26a3
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-add-fk-route-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 6aa2251c-18c1-4086-9f38-965b7ee6c080
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-add-fk-route-schedule.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: c03ccfe7-5753-41b8-9d3c-bfae1641d993
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-add-fk-route-execution.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

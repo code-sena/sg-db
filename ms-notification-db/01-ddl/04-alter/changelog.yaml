@@ -1,0 +1,31 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: f43f0033-9063-4b1b-8682-8b3cf3a6fb70
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-add-fk-alert.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: e68dfe0c-303a-4633-9c6f-44de19169cb3
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-add-fk-alert-recipient.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 439118e9-8d06-4dad-8e18-2ddb8b61f960
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-add-fk-boarding.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

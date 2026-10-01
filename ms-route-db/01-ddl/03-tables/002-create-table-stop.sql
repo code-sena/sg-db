@@ -1,0 +1,9 @@
+CREATE TABLE Route.Stop (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    CityId UNIQUEIDENTIFIER NOT NULL,
+    SchoolId UNIQUEIDENTIFIER NOT NULL,
+    Address VARCHAR(30) NOT NULL,
+    Longitude DECIMAL(12,2) NOT NULL,
+    Latitude DECIMAL(12,2) NOT NULL,
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);

@@ -1,0 +1,51 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 11d7eaec-f10d-4a89-ba48-57204c141f1a
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-table-role.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: f9341af5-8014-42e1-b5d3-90645e05f29a
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-create-table-permissions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 17600c33-b86a-4f26-9dd0-eec23cc31c40
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-create-table-permissions-role.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 9e6f2726-37e3-4dc4-86b7-5bba243a4090
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-create-table-profile.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 0393c7dd-3c4e-4301-8277-a3ba8dd3fba3
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-create-table-session-profile.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

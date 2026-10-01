@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: ae4d7ccc-3a64-4084-ab30-11ac0c98a2ad
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-create-schema-settings.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
