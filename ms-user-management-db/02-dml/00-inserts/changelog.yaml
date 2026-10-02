@@ -1,1 +1,11 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 735a49fd-e7cd-4554-9cbf-0aa20f57a684
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-person-admin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
