@@ -9,3 +9,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 9fec4d1a-815c-4fb0-b07c-9a8ebcc32408
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-persons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
