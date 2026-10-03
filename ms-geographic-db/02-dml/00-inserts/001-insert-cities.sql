@@ -1,0 +1,22 @@
+INSERT INTO Geographic.City (Id, Name, Country, Status)
+VALUES
+('A1000001-0000-4000-8000-000000000001', 'Bogota', 'Colombia', 'Active'),
+('A1000002-0000-4000-8000-000000000002', 'Medellin', 'Colombia', 'Active'),
+('A1000003-0000-4000-8000-000000000003', 'Cali', 'Colombia', 'Active'),
+('A1000004-0000-4000-8000-000000000004', 'Barranquilla', 'Colombia', 'Active'),
+('A1000005-0000-4000-8000-000000000005', 'Bucaramanga', 'Colombia', 'Active'),
+('A1000006-0000-4000-8000-000000000006', 'Floridablanca', 'Colombia', 'Active'),
+('A1000007-0000-4000-8000-000000000007', 'Giron', 'Colombia', 'Active'),
+('A1000008-0000-4000-8000-000000000008', 'Cartagena', 'Colombia', 'Active'),
+('A1000009-0000-4000-8000-000000000009', 'Cucuta', 'Colombia', 'Active'),
+('A1000010-0000-4000-8000-000000000010', 'Santa Marta', 'Colombia', 'Active'),
+('A1000011-0000-4000-8000-000000000011', 'Villavicencio', 'Colombia', 'Active'),
+('A1000012-0000-4000-8000-000000000012', 'Ibague', 'Colombia', 'Active'),
+('A1000013-0000-4000-8000-000000000013', 'Neiva', 'Colombia', 'Active'),
+('A1000014-0000-4000-8000-000000000014', 'Pasto', 'Colombia', 'Active'),
+('A1000015-0000-4000-8000-000000000015', 'Manizales', 'Colombia', 'Active'),
+('A1000016-0000-4000-8000-000000000016', 'Armenia', 'Colombia', 'Active'),
+('A1000017-0000-4000-8000-000000000017', 'Pereira', 'Colombia', 'Active'),
+('A1000018-0000-4000-8000-000000000018', 'Sincelejo', 'Colombia', 'Active'),
+('A1000019-0000-4000-8000-000000000019', 'Valledupar', 'Colombia', 'Active'),
+('A1000020-0000-4000-8000-000000000020', 'Monteria', 'Colombia', 'Active');

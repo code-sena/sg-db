@@ -39,3 +39,73 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 0e2a5cd5-c6fb-4c4b-bd3a-f351f0c311fa
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-insert-profile-admin2.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000005
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-test-persons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000009
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-insert-test-roles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000010
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 008-insert-permissions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000011
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 009-insert-permissions-role.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000012
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 010-insert-test-profiles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000013
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 011-insert-session-profiles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

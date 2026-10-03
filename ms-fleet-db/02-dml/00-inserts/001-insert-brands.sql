@@ -1,0 +1,22 @@
+INSERT INTO Fleet.Brand (Name, Status)
+VALUES
+('Mercedes-Benz', 'Active'),
+('Volvo', 'Active'),
+('Scania', 'Active'),
+('Yutong', 'Active'),
+('King Long', 'Active'),
+('Zhongtong', 'Active'),
+('Hino', 'Active'),
+('Isuzu', 'Active'),
+('Chevrolet', 'Active'),
+('Hyundai', 'Active'),
+('Kia', 'Active'),
+('Ford', 'Active'),
+('MAN', 'Active'),
+('Iveco', 'Active'),
+('BYD', 'Active'),
+('Tata', 'Active'),
+('Ashok Leyland', 'Active'),
+('JAC', 'Active'),
+('Dongfeng', 'Active'),
+('Foton', 'Active');

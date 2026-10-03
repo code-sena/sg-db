@@ -19,3 +19,43 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 539450f3-4998-407e-bb8d-18ebafa20607
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-insert-person-admin2.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000006
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-insert-families.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000007
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-family-members.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000008
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-insert-driver-licenses.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

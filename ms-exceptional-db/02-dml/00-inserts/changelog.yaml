@@ -1,1 +1,21 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000031
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-exceptional-driver-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000032
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-exceptional-route-usage.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
