@@ -1,1 +1,41 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000016
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-brands.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000017
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-models.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000018
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-insert-buses.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000019
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-insert-driver-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

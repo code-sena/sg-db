@@ -1,1 +1,41 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000027
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-alert-types.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000028
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-alerts.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000029
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-insert-alert-recipients.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000030
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-insert-boardings.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

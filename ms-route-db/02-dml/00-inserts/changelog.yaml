@@ -1,1 +1,71 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000020
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-routes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000021
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 002-insert-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000022
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 003-insert-route-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000023
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-insert-route-bus-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000024
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-insert-route-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000025
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-route-schedules.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000026
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-insert-route-executions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

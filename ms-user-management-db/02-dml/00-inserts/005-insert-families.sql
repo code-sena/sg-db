@@ -1,0 +1,22 @@
+INSERT INTO UserManagement.Family (Id, Name, Observations, Status)
+VALUES
+('B2000001-0000-4000-8000-000000000001', 'Familia Lopez Perez', 'Acudiente Maria Lopez y estudiante Juan Perez', 'Active'),
+('B2000002-0000-4000-8000-000000000002', 'Familia Diaz', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000003-0000-4000-8000-000000000003', 'Familia Ramirez', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000004-0000-4000-8000-000000000004', 'Familia Pena', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000005-0000-4000-8000-000000000005', 'Familia Guerrero', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000006-0000-4000-8000-000000000006', 'Familia Jimenez', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000007-0000-4000-8000-000000000007', 'Familia Cabrera', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000008-0000-4000-8000-000000000008', 'Familia Rivera', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000009-0000-4000-8000-000000000009', 'Familia Molina', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000010-0000-4000-8000-000000000010', 'Familia Silva', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000011-0000-4000-8000-000000000011', 'Familia Cortes', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000012-0000-4000-8000-000000000012', 'Familia Fuentes', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000013-0000-4000-8000-000000000013', 'Familia Delgado', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000014-0000-4000-8000-000000000014', 'Familia Arias', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000015-0000-4000-8000-000000000015', 'Familia Bustamante', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000016-0000-4000-8000-000000000016', 'Familia Quintero', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000017-0000-4000-8000-000000000017', 'Familia Sandoval', 'Madre acudiente y un estudiante matriculado', 'Active'),
+('B2000018-0000-4000-8000-000000000018', 'Familia Campos', 'Acudiente principal y estudiante de la misma sede', 'Active'),
+('B2000019-0000-4000-8000-000000000019', 'Familia Rincon', 'Familia usuaria del transporte escolar', 'Active'),
+('B2000020-0000-4000-8000-000000000020', 'Familia Prieto', 'Madre acudiente y un estudiante matriculado', 'Active');

@@ -1,1 +1,11 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000001
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-insert-cities.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,22 @@
+INSERT INTO Iam.Permissions (TypePermissions, Description)
+VALUES
+('schools.read', 'List schools and campuses'),
+('schools.create', 'Create schools and campuses'),
+('schools.update', 'Update school and campus data'),
+('students.read', 'List students and guardians'),
+('students.manage', 'Create and update student records'),
+('routes.read', 'List routes and stops'),
+('routes.manage', 'Create routes, stops and schedules'),
+('buses.read', 'List buses, brands and models'),
+('buses.manage', 'Create and assign buses'),
+('drivers.read', 'List drivers and licenses'),
+('drivers.manage', 'Assign drivers to buses'),
+('alerts.read', 'Read alerts and notifications'),
+('alerts.ack', 'Acknowledge alerts'),
+('boarding.read', 'Read boarding events'),
+('boarding.manage', 'Register boarding events'),
+('users.read', 'List users and roles'),
+('users.manage', 'Create users and assign roles'),
+('reports.read', 'Access route and attendance reports'),
+('settings.manage', 'Update security settings and policies'),
+('audit.read', 'Read audit and error logs');
