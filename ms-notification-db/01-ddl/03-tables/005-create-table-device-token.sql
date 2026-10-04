@@ -1,0 +1,7 @@
+CREATE TABLE Notification.DeviceToken (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    ProfileId UNIQUEIDENTIFIER NOT NULL,
+    ExpoToken VARCHAR(300) NOT NULL,
+    UpdatedAt DATETIME2 NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT UQ_DeviceToken_ExpoToken UNIQUE (ExpoToken)
+);

@@ -39,3 +39,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 6a5c97ca-22db-47c6-8893-8812c9403e1d
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 005-create-table-device-token.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
