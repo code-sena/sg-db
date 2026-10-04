@@ -186,9 +186,10 @@ Table Stop [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	CityId uuid [not null, ref: > City.Id]
 	SchoolId uuid [not null, ref: > School.Id]
-	Address varchar(30)
-	Longitude decimal(12,2)
-	Latitude decimal(12,2)
+	Name varchar(30) [ not null ]
+	Address varchar(100) [ not null ]
+	Longitude decimal(10,7) [ not null ]
+	Latitude decimal(10,7) [ not null ]
 	Status status [ not null, default: ACTIVE ]
 }
 
@@ -197,6 +198,8 @@ Table Route [headercolor: #175e7a] {
 	CampusId uuid [not null, ref: > SchoolCampus.Id]
 	Name varchar(30) [ not null ]
 	TargetSector varchar(30) [ not null ]
+	StartTime time [ not null ]
+	EndTime time [ not null ]
 	Status status [ not null, default: ACTIVE ]
 }
 
@@ -229,8 +232,9 @@ Table RouteExecution [headercolor: #875e71] {
 	// RouteScheduleId uuid [ not null, ref: > RouteSchedule.Id ]
 	BusId uuid [ not null, ref: > Bus.Id]
 	DriverId uuid [ not null, ref: > Profile.Id]
+	RouteId uuid [ not null, ref: > Route.Id]
 	StartDateTime datetime2 [ not null ]
-	EndDateTime datetime2 [ not null ]
+	EndDateTime datetime2
 	Status Status [ not null, default: ACTIVE ]
 }
 

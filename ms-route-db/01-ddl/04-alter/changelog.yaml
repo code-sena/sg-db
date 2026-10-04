@@ -69,3 +69,23 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 7b2f9c41-5d8e-4a16-9f3c-2e6b8d0a4f17
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 008-alter-stop-geo-and-route-times.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: c7ee1426-49cb-491e-9798-bb018b439a92
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 009-add-route-execution-route-id.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

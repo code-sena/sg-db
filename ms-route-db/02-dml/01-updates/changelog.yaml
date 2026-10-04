@@ -1,1 +1,11 @@
-databaseChangeLog: []
+databaseChangeLog:
+
+  - changeSet:
+      id: a575c281-5d5f-4bec-9654-ae336457851e
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 001-backfill-route-execution-route-id.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
