@@ -232,8 +232,9 @@ Table RouteExecution [headercolor: #875e71] {
 	// RouteScheduleId uuid [ not null, ref: > RouteSchedule.Id ]
 	BusId uuid [ not null, ref: > Bus.Id]
 	DriverId uuid [ not null, ref: > Profile.Id]
+	RouteId uuid [ not null, ref: > Route.Id]
 	StartDateTime datetime2 [ not null ]
-	EndDateTime datetime2 [ not null ]
+	EndDateTime datetime2
 	Status Status [ not null, default: ACTIVE ]
 }
 
