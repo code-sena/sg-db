@@ -29,3 +29,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 7b1c4e90-2f8d-4a65-9c3e-15d0f6b28e41
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 004-add-fk-school-admin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
