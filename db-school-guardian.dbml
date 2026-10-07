@@ -72,7 +72,7 @@ Table Person [headercolor: #175e7a] {
 	IdentificationType Identificationtype [ not null, default: TI ]
 	IdentificationNumber varchar(20) [ not null ]
 	Email varchar(50) [ not null ]
-	Phone int [ not null ]
+	Phone bigint [ not null ]
 	ResidenceAddress varchar(50) [ not null ]
 	DateBirth date [ not null ]
 	Status status [ not null, default: ACTIVE ]
