@@ -109,3 +109,33 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000033
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 012-insert-persons-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000034
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 013-insert-profiles-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000035
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 014-insert-school-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
