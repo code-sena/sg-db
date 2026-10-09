@@ -4,6 +4,7 @@ TableGroup Iam [color: #e74c3c] {
     Profile
     Role
     SessionProfile
+    TermsAcceptance
 }
 
 TableGroup UserManagement [color: #3498db] {
@@ -339,4 +340,14 @@ Table Permissions [headercolor: #175e7a] {
 	Id tinyint [ pk, increment, not null ]
 	TypePermissions varchar(100) [ not null ]
 	Description varchar(150) [ not null ]
+}
+
+Table TermsAcceptance [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	StudentProfileId uuid [null, ref: > Profile.Id]
+	TermsVersion varchar(20) [ not null ]
+	AcceptedAt datetime2 [ not null ]
+	IpAddress varchar(50) [ null ]
+	Channel varchar(20) [ not null, default: 'mobile' ]
 }
