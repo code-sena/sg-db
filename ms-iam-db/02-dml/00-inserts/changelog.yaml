@@ -179,3 +179,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: e615d427-344d-4630-95d6-faa2570bc167
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 019-insert-legacy-terms-acceptances.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
