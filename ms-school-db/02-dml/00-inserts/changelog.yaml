@@ -40,12 +40,3 @@ databaseChangeLog:
             splitStatements: true
             stripComments: true
 
-  - changeSet:
-      id: 8c692190-5669-4822-93b9-a21eb7f97c7d
-      author: School Guardian
-      changes:
-        - sqlFile:
-            path: 006-insert-school-admins-batch-eco.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
