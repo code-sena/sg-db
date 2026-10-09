@@ -65,52 +65,6 @@ services:
       --changeLogFile=changelog/changelog-master.yaml
       update
 
-  liquibase-audit:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-audit
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-audit-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
-  liquibase-exceptional:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-exceptional
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-exceptional-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-      liquibase-fleet:
-        condition: service_completed_successfully
-      liquibase-route:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
   liquibase-fleet:
     image: liquibase/liquibase:4.29
     container_name: liquibase-fleet
