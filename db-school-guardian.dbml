@@ -49,6 +49,7 @@ TableGroup Notification [color: #1abc9c] {
 	Alert
     AlertType
 	AlertRecipient
+	DeviceToken
 }
 
 TableGroup Configuration [color: #95a5a6] {
@@ -139,6 +140,13 @@ Table AlertRecipient [headercolor: #175e7a] {
 	AlertId uuid [not null, ref: > Alert.Id]
 	ProfileId uuid [not null, ref: > Profile.Id]
 	DateTimeRead datetime2 [ not null ]
+}
+
+Table DeviceToken [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	ExpoToken varchar(300) [ not null, unique ]
+	UpdatedAt datetime2 [ not null ]
 }
 
 Table Bus [headercolor: #175e7a] {
