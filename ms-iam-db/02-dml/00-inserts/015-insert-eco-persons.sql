@@ -1,0 +1,32 @@
+-- Batch ECO: 28 personas (9 admin, 5 acudientes, 10 estudiantes, 4 conductores).
+-- Van antes que los perfiles porque Iam.Profile referencia UserManagement.Person.
+INSERT INTO UserManagement.Person (Id, Name, LastName, IdentificationType, IdentificationNumber, Email, Phone, ResidenceAddress, DateBirth, Status)
+VALUES
+('E1000001-0000-4000-8000-000000000001', 'Admin Eco 1', 'Rector', 'CC', '771000101', 'admin.eco1@colegio-eco.edu.co', 320100101, 'Cra 1 # 10-01', '1976-05-10', 'Active'),
+('E1000002-0000-4000-8000-000000000002', 'Admin Eco 2', 'Rector', 'CC', '771000102', 'admin.eco2@colegio-eco.edu.co', 320100102, 'Cra 2 # 10-02', '1977-05-10', 'Active'),
+('E1000003-0000-4000-8000-000000000003', 'Admin Eco 3', 'Rector', 'CC', '771000103', 'admin.eco3@colegio-eco.edu.co', 320100103, 'Cra 3 # 10-03', '1978-05-10', 'Active'),
+('E1000004-0000-4000-8000-000000000004', 'Admin Eco 4', 'Rector', 'CC', '771000104', 'admin.eco4@colegio-eco.edu.co', 320100104, 'Cra 4 # 10-04', '1979-05-10', 'Active'),
+('E1000005-0000-4000-8000-000000000005', 'Admin Eco 5', 'Rector', 'CC', '771000105', 'admin.eco5@colegio-eco.edu.co', 320100105, 'Cra 5 # 10-05', '1980-05-10', 'Active'),
+('E1000006-0000-4000-8000-000000000006', 'Admin Eco 6', 'Rector', 'CC', '771000106', 'admin.eco6@colegio-eco.edu.co', 320100106, 'Cra 6 # 10-06', '1981-05-10', 'Active'),
+('E1000007-0000-4000-8000-000000000007', 'Admin Eco 7', 'Rector', 'CC', '771000107', 'admin.eco7@colegio-eco.edu.co', 320100107, 'Cra 7 # 10-07', '1982-05-10', 'Active'),
+('E1000008-0000-4000-8000-000000000008', 'Admin Eco 8', 'Rector', 'CC', '771000108', 'admin.eco8@colegio-eco.edu.co', 320100108, 'Cra 8 # 10-08', '1983-05-10', 'Active'),
+('E1000009-0000-4000-8000-000000000009', 'Admin Eco 9', 'Rector', 'CC', '771000109', 'admin.eco9@colegio-eco.edu.co', 320100109, 'Cra 9 # 10-09', '1984-05-10', 'Active'),
+('E1000010-0000-4000-8000-000000000010', 'Acudiente Eco 1', 'Padre', 'CC', '771000201', 'acudiente.eco1@colegio-eco.edu.co', 320100201, 'Calle 1 # 20-01', '1986-05-10', 'Active'),
+('E1000011-0000-4000-8000-000000000011', 'Acudiente Eco 2', 'Padre', 'CC', '771000202', 'acudiente.eco2@colegio-eco.edu.co', 320100202, 'Calle 2 # 20-02', '1987-05-10', 'Active'),
+('E1000012-0000-4000-8000-000000000012', 'Acudiente Eco 3', 'Padre', 'CC', '771000203', 'acudiente.eco3@colegio-eco.edu.co', 320100203, 'Calle 3 # 20-03', '1988-05-10', 'Active'),
+('E1000013-0000-4000-8000-000000000013', 'Acudiente Eco 4', 'Padre', 'CC', '771000204', 'acudiente.eco4@colegio-eco.edu.co', 320100204, 'Calle 4 # 20-04', '1989-05-10', 'Active'),
+('E1000014-0000-4000-8000-000000000014', 'Acudiente Eco 5', 'Padre', 'CC', '771000205', 'acudiente.eco5@colegio-eco.edu.co', 320100205, 'Calle 5 # 20-05', '1990-05-10', 'Active'),
+('E1000015-0000-4000-8000-000000000015', 'Estudiante Eco 1', 'Menor', 'TI', '1071000301', 'estudiante.eco1@colegio-eco.edu.co', 320100301, 'Av 1 # 30-01', '2014-05-10', 'Active'),
+('E1000016-0000-4000-8000-000000000016', 'Estudiante Eco 2', 'Menor', 'TI', '1071000302', 'estudiante.eco2@colegio-eco.edu.co', 320100302, 'Av 2 # 30-02', '2015-05-10', 'Active'),
+('E1000017-0000-4000-8000-000000000017', 'Estudiante Eco 3', 'Menor', 'TI', '1071000303', 'estudiante.eco3@colegio-eco.edu.co', 320100303, 'Av 3 # 30-03', '2016-05-10', 'Active'),
+('E1000018-0000-4000-8000-000000000018', 'Estudiante Eco 4', 'Menor', 'TI', '1071000304', 'estudiante.eco4@colegio-eco.edu.co', 320100304, 'Av 4 # 30-04', '2017-05-10', 'Active'),
+('E1000019-0000-4000-8000-000000000019', 'Estudiante Eco 5', 'Menor', 'TI', '1071000305', 'estudiante.eco5@colegio-eco.edu.co', 320100305, 'Av 5 # 30-05', '2018-05-10', 'Active'),
+('E1000020-0000-4000-8000-000000000020', 'Estudiante Eco 6', 'Menor', 'TI', '1071000306', 'estudiante.eco6@colegio-eco.edu.co', 320100306, 'Av 6 # 30-06', '2013-05-10', 'Active'),
+('E1000021-0000-4000-8000-000000000021', 'Estudiante Eco 7', 'Menor', 'TI', '1071000307', 'estudiante.eco7@colegio-eco.edu.co', 320100307, 'Av 7 # 30-07', '2014-05-10', 'Active'),
+('E1000022-0000-4000-8000-000000000022', 'Estudiante Eco 8', 'Menor', 'TI', '1071000308', 'estudiante.eco8@colegio-eco.edu.co', 320100308, 'Av 8 # 30-08', '2015-05-10', 'Active'),
+('E1000023-0000-4000-8000-000000000023', 'Estudiante Eco 9', 'Menor', 'TI', '1071000309', 'estudiante.eco9@colegio-eco.edu.co', 320100309, 'Av 9 # 30-09', '2016-05-10', 'Active'),
+('E1000024-0000-4000-8000-000000000024', 'Estudiante Eco 10', 'Menor', 'TI', '1071000310', 'estudiante.eco10@colegio-eco.edu.co', 320100310, 'Av 10 # 30-010', '2017-05-10', 'Active'),
+('E1000025-0000-4000-8000-000000000025', 'Conductor Eco 1', 'Chofer', 'CC', '771000401', 'conductor.eco1@colegio-eco.edu.co', 320100401, 'Diag 1 # 40-01', '1981-05-10', 'Active'),
+('E1000026-0000-4000-8000-000000000026', 'Conductor Eco 2', 'Chofer', 'CC', '771000402', 'conductor.eco2@colegio-eco.edu.co', 320100402, 'Diag 2 # 40-02', '1982-05-10', 'Active'),
+('E1000027-0000-4000-8000-000000000027', 'Conductor Eco 3', 'Chofer', 'CC', '771000403', 'conductor.eco3@colegio-eco.edu.co', 320100403, 'Diag 3 # 40-03', '1983-05-10', 'Active'),
+('E1000028-0000-4000-8000-000000000028', 'Conductor Eco 4', 'Chofer', 'CC', '771000404', 'conductor.eco4@colegio-eco.edu.co', 320100404, 'Diag 4 # 40-04', '1984-05-10', 'Active');

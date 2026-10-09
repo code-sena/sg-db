@@ -139,3 +139,33 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5eccb1ac-33f0-419a-95ee-8ccf37f80014
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 015-insert-eco-persons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4cb67f9a-17b3-41f4-9d1b-1bbedb28e4b6
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 016-insert-eco-profiles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ee678d48-9d6d-4f49-8fff-b2dff8613114
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 017-insert-terms-acceptances.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
