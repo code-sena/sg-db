@@ -42,6 +42,7 @@ TableGroup Bus [color: #9b59b6] {
     Bus
     Brand
     Model
+    DriverAssignemts
 }
 
 TableGroup Notification [color: #1abc9c] {

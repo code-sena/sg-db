@@ -14,5 +14,4 @@ VALUES
 ('Accountant', 'Billing and payments staff', 'Active'),
 ('RouteAnalyst', 'Analyzes route performance and delays', 'Active'),
 ('FleetAnalyst', 'Monitors fleet usage and GPS data', 'Active'),
-('SupportAgent', 'Handles parent support tickets', 'Active'),
-('Auditor', 'Read-only access to audit logs', 'Active');
+('SupportAgent', 'Handles parent support tickets', 'Active');
