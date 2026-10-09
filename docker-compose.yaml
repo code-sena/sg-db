@@ -123,6 +123,8 @@ services:
     depends_on:
       sqlserver-init:
         condition: service_completed_successfully
+      liquibase-geographic:
+        condition: service_completed_successfully
     command: >
       --searchPath=/workspace
       --changeLogFile=changelog/changelog-master.yaml
@@ -212,6 +214,8 @@ services:
       - sg-services-network
     depends_on:
       sqlserver-init:
+        condition: service_completed_successfully
+      liquibase-gps:
         condition: service_completed_successfully
     command: >
       --searchPath=/workspace
