@@ -19,13 +19,3 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
-
-  - changeSet:
-      id: 5e000000-0000-4000-8000-000000000004
-      author: Juan Chala
-      changes:
-        - sqlFile:
-            path: 003-insert-courses.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true

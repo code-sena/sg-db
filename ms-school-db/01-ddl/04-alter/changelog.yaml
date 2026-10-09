@@ -21,16 +21,6 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
-      id: d941c3c8-6506-4db1-b481-c61c6aae71cf
-      author: Juan Chala
-      changes:
-        - sqlFile:
-            path: 003-add-fk-course.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
-
-  - changeSet:
       id: 7b1c4e90-2f8d-4a65-9c3e-15d0f6b28e41
       author: School Guardian
       changes:

@@ -16,6 +16,7 @@ TableGroup UserManagement [color: #3498db] {
 TableGroup School [color: #2ecc71] {
     School
     SchoolCampus
+    SchoolAdmin
 }
 
 TableGroup Geographic [color: #16a085] {
@@ -50,19 +51,9 @@ TableGroup Notification [color: #1abc9c] {
 	AlertRecipient
 }
 
-TableGroup Exceptional [color: #34495e] {
-    ExceptionalDriverUsage
-    ExceptionalRouteUsage
-}
-
 TableGroup Configuration [color: #95a5a6] {
 	PasswordPolicies
     SecuritySettings
-}
-
-TableGroup Audit [color: #7f1c8d] {
-	Audit
-	LogErrors
 }
 
 Table Person [headercolor: #175e7a] {
@@ -270,23 +261,6 @@ Table Profile [headercolor: #175e7a] {
 	Status status [ not null, default: ACTIVE ]
 }
 
-Table ExceptionalDriverUsage [headercolor: #175e7a] {
-	Id uuid [ pk, not null ]
-	BusId uuid [not null, ref: > Bus.Id]
-	ProfileId uuid [not null, ref: > Profile.Id]
-	DateTime datetime2 [ not null ]
-	Reason varchar(200) [ not null ]
-}
-
-Table ExceptionalRouteUsage [headercolor: #175e7a] {
-	Id uuid [ pk, not null ]
-	ProfileId uuid [ not null ] [not null, ref: > Profile.Id]
-	RouteId uuid [not null, ref: > Route.Id]
-	StartDateTime datetime2 [ not null ]
-	EndDateTime datetime2 [ not null ]
-	Reason varchar(200) [ not null ]
-}
-
 Table GpsDevice [headercolor: #175e7a] {
 	ID uuid [ pk ]
 	Imei varchar(20)
@@ -310,6 +284,13 @@ Table SchoolCampus [headercolor: #175e7a] {
 	SchoolId uuid [not null, ref: > School.Id]
 	Name varchar(30)
 	Address varchar(30)
+	Status status [ not null, default: ACTIVE ]
+}
+
+Table SchoolAdmin [headercolor: #175e7a] {
+	Id uuid [ pk ]
+	SchoolId uuid [not null, ref: > School.Id]
+	ProfileId uuid [not null, ref: > Profile.Id, unique]
 	Status status [ not null, default: ACTIVE ]
 }
 
@@ -339,16 +320,6 @@ Table SessionProfile [headercolor: #175e7a] {
 	StatusSession varchar(50) [ not null ]
 }
 
-Table Audit [headercolor: #175e7a] {
-	Id bigint [ pk, increment, not null ]
-	ProfileId uuid [not null, ref: > Profile.Id]
-	Action varchar(255) [ not null ]
-	Date datetime2 [ not null ]
-	Description varchar(500) [ not null ]
-	IPAddress varchar(50) [ not null ]
-	Application varchar(255) [ not null ]
-}
-
 Table PermissionsRole [headercolor: #175e7a] {
 	Id tinyint [ pk, increment, not null ]
 	PermissionsId tinyint [not null, ref: > Permissions.Id]
@@ -359,12 +330,4 @@ Table Permissions [headercolor: #175e7a] {
 	Id tinyint [ pk, increment, not null ]
 	TypePermissions varchar(100) [ not null ]
 	Description varchar(150) [ not null ]
-}
-
-Table LogErrors [headercolor: #175e7a] {
-	Id bigint [ pk, increment, not null ]
-	TypeError varchar(100) [ not null ]
-	Description varchar(150) [ not null ]
-	IPAddress varchar(50) [ not null ]
-	OccurredAt datetime2 [ not null ]
 }
