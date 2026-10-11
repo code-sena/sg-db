@@ -64,48 +64,47 @@ Table Person [headercolor: #175e7a] {
 	Name varchar(50) [ not null ]
 	LastName varchar(50) [ not null ]
 	IdentificationType Identificationtype [ not null, default: TI ]
-	IdentificationNumber varchar(20) [ not null ]
-	Email varchar(50) [ not null ]
+	IdentificationNumber varchar(20) [ not null, unique ]
+	Email varchar(50) [ not null, unique ]
 	Phone bigint [ not null ]
 	ResidenceAddress varchar(50) [ not null ]
 	DateBirth date [ not null ]
-	Status status [ not null, default: ACTIVE ]
 }
 
 Table Role [headercolor: #175e7a] {
 	ID tinyint [ pk, not null ]
 	Name varchar(20) [ not null, unique ]
 	Description varchar(100) [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Family [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	Name varchar(50) [ not null ]
 	Observations varchar(100) [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table FamilyMember [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	FamilyId uuid [not null, ref: > Family.Id]
 	ProfileId uuid [not null, ref: > Profile.Id]
-	RelationshipType RelationshipType [ default: PARENT]
-	// Note: RelationshipType can be PARENT and STUDENT
-	Status status [ not null, default: ACTIVE ]
+	RelationshipType RelationshipType [ default: 'Parent' ]
+	// Note: RelationshipType can be Parent and Student
+	Status status [ not null, default: 'Active' ]
 }
 
 Table School [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	CityId uuid [not null, ref: > City.Id]
-	Logo (PENDING) [ not null ]
+	Logo varbinary(max) [ not null ]
 	Name varchar(30) [ not null ]
 	Address varchar(30) [ not null ]
 	Phone int [ not null ]
 	Email varchar(50) [ not null ]
 	Website varchar(100) [ null ]
 	Theme varchar(20) [ null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Boarding [headercolor: #175e7a] {
@@ -153,26 +152,26 @@ Table DeviceToken [headercolor: #175e7a] {
 
 Table Bus [headercolor: #175e7a] {
 	Id uuid [ pk, not null ]
-	CampusId uuid [not null, ref: > SchoolCampus.Id]
+	CampuseId uuid [not null, ref: > SchoolCampus.Id]
 	SoatValidity date [ not null ]
-	GpsDeviceId uuid [not null, ref: > GpsDevice.Id]
+	GpsDeviceId uuid [not null, unique, ref: > GpsDevice.Id]
 	Capacity tinyint [ not null ]
-	Plate varchar(15) [ not null ]
+	Plate varchar(15) [ not null, unique ]
 	ModelId tinyint [not null, ref: > Model.Id]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Brand [headercolor: #175e7a] {
 	Id tinyint [ pk ]
 	Name varchar(30)
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Model [headercolor: #175e7a] {
 	Id tinyint [ pk ]
 	BrandId tinyint [not null, ref: > Brand.Id]
 	Name varchar(30)
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table DriverAssignemts [headercolor: #175e7a] {
@@ -191,41 +190,41 @@ Table Stop [headercolor: #175e7a] {
 	Address varchar(100) [ not null ]
 	Longitude decimal(10,7) [ not null ]
 	Latitude decimal(10,7) [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Route [headercolor: #175e7a] {
 	Id uuid [ pk ]
-	CampusId uuid [not null, ref: > SchoolCampus.Id]
+	CampuseId uuid [not null, ref: > SchoolCampus.Id]
 	Name varchar(30) [ not null ]
 	TargetSector varchar(30) [ not null ]
 	StartTime time [ not null ]
 	EndTime time [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table City [headercolor: #175e7a] {
 	Id uuid [ pk ]
-	Name varchar(40)
-	Country varchar(30)
-	Status status [ not null, default: ACTIVE ]
+	Name varchar(40) [ not null ]
+	Country varchar(30) [ not null ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table RouteStudentAssignments [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	ProfileId uuid [not null, ref: > Profile.Id]
 	RouteStopId uuid [not null, ref: > RouteStop.Id]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table RouteSchedule [headercolor: #175e71] {
 	Id uuid [ pk ]
 	RouteBusAssignmentsId uuid [ not null, ref: > RouteBusAssignments.Id ]
-	DayOfWeek DayOfWeek [ not null, default: MONDAY ]
-	// Note: DayOfWeek can be MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+	DayOfWeek DayOfWeek [ not null, default: 'Monday' ]
+	// Note: DayOfWeek can be Monday, Tuesday, Wednesday, Thursday, Friday
 	Direction varchar(10) [ not null ]
 	StartTime time [ not null ]
-	Status Status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table RouteExecution [headercolor: #875e71] {
@@ -233,10 +232,10 @@ Table RouteExecution [headercolor: #875e71] {
 	// RouteScheduleId uuid [ not null, ref: > RouteSchedule.Id ]
 	BusId uuid [ not null, ref: > Bus.Id]
 	DriverId uuid [ not null, ref: > Profile.Id]
-	RouteId uuid [ not null, ref: > Route.Id]
+	RouteId uuid [ null, ref: > Route.Id]
 	StartDateTime datetime2 [ not null ]
 	EndDateTime datetime2
-	Status Status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table RouteStop [headercolor: #175e7a] {
@@ -244,64 +243,63 @@ Table RouteStop [headercolor: #175e7a] {
 	RouteId uuid [not null, ref: > Route.Id]
 	StopId uuid [not null, ref: > Stop.Id]
 	OrderSequence int [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table RouteBusAssignments [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	BusId uuid [not null, ref: > Bus.Id]
 	RouteId uuid [not null, ref: > Route.Id]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table DriverLicense [headercolor: #175e7a] {
 	ID uuid [ pk ]
 	ProfileId uuid [not null, ref: > Profile.Id]
-	LicenseNumber varchar(20) [ not null ]
+	LicenseNumber varchar(20) [ not null, unique ]
 	LicenseExpirationDate date [ not null ]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Profile [headercolor: #175e7a] {
 	Id uuid [ pk, not null ]
 	PersonId uuid [ not null, ref: > Person.Id ]
-	CampuseId uuid [not null, ref: > SchoolCampus.Id]
+	CampuseId uuid [ null, ref: > SchoolCampus.Id ]
 	PasswordHash varchar(100) [ not null ]
     RoleId tinyint [not null, ref: > Role.Id]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table GpsDevice [headercolor: #175e7a] {
 	ID uuid [ pk ]
-	Imei varchar(20)
-	LastConnection datetime
-	GpsStatus boolean [ not null ]
+	Imei varchar(20) [ not null, unique ]
+	LastConnection datetime2 [ not null ]
+	GpsStatus bit [ not null ]
 }
 
 Table GpsLocation [headercolor: #175e7a] {
 	ID uuid [ pk ]
 	GpsDeviceID uuid [not null, ref: > GpsDevice.ID]
-	Latitude decimal(10,7)
-	Longitude decimal(10,7)
-	Speed decimal(8,2)
-	Course decimal(8,2)
-	DateTime datetime
-	Status status [ not null, default: ACTIVE ]
+	Latitude decimal(10,7) [ not null ]
+	Longitude decimal(10,7) [ not null ]
+	Speed decimal(8,2) [ not null ]
+	Course decimal(8,2) [ not null ]
+	DateTime datetime2 [ not null ]
 }
 
 Table SchoolCampus [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	SchoolId uuid [not null, ref: > School.Id]
-	Name varchar(30)
-	Address varchar(30)
-	Status status [ not null, default: ACTIVE ]
+	Name varchar(30) [ not null ]
+	Address varchar(30) [ not null ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table SchoolAdmin [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	SchoolId uuid [not null, ref: > School.Id]
 	ProfileId uuid [not null, ref: > Profile.Id, unique]
-	Status status [ not null, default: ACTIVE ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table SecuritySettings [headercolor: #175e7a] {
@@ -327,7 +325,7 @@ Table SessionProfile [headercolor: #175e7a] {
 	DateStart datetime2 [ not null ]
 	DateEnd datetime2 [ not null ]
 	IPAddress varchar(50) [ not null ]
-	StatusSession varchar(50) [ not null ]
+	StatusSession StatusSession [ not null, default: 'Active' ]
 }
 
 Table PermissionsRole [headercolor: #175e7a] {
