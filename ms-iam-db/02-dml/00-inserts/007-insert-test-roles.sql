@@ -1,4 +1,4 @@
--- 15 roles adicionales para completar 20 junto a los ya sembrados (Admin, SuperAdmin, Student, Driver, Parent).
+-- 14 roles adicionales para completar 19 junto a los ya sembrados (Admin, SuperAdmin, Student, Driver, Parent).
 INSERT INTO Iam.Role (Name, Description, Status)
 VALUES
 ('Coordinator', 'Academic coordination and schedule management', 'Active'),
@@ -14,5 +14,4 @@ VALUES
 ('Accountant', 'Billing and payments staff', 'Active'),
 ('RouteAnalyst', 'Analyzes route performance and delays', 'Active'),
 ('FleetAnalyst', 'Monitors fleet usage and GPS data', 'Active'),
-('SupportAgent', 'Handles parent support tickets', 'Active'),
-('Auditor', 'Read-only access to audit logs', 'Active');
+('SupportAgent', 'Handles parent support tickets', 'Active');

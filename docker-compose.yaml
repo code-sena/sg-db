@@ -201,27 +201,6 @@ services:
       --changeLogFile=changelog/changelog-master.yaml
       update
 
-  liquibase-settings:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-settings
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-settings-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-gps:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
   liquibase-user-management:
     image: liquibase/liquibase:4.29
     container_name: liquibase-user-management

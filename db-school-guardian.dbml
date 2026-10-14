@@ -54,11 +54,6 @@ TableGroup Notification [color: #1abc9c] {
 	DeviceToken
 }
 
-TableGroup Configuration [color: #95a5a6] {
-	PasswordPolicies
-    SecuritySettings
-}
-
 Table Person [headercolor: #175e7a] {
 	Id uuid [ pk, not null ]
 	Name varchar(50) [ not null ]
@@ -300,23 +295,6 @@ Table SchoolAdmin [headercolor: #175e7a] {
 	SchoolId uuid [not null, ref: > School.Id]
 	ProfileId uuid [not null, ref: > Profile.Id, unique]
 	Status status [ not null, default: 'Active' ]
-}
-
-Table SecuritySettings [headercolor: #175e7a] {
-	Id tinyint [ pk, increment, not null ]
-	NameSettings varchar(100) [ not null, unique ]
-	ValueSettings varchar(100) [ not null ]
-	Description varchar(150) [ not null ]
-}
-
-Table PasswordPolicies [headercolor: #175e7a] {
-	Id tinyint [ pk, increment, not null ]
-	MinLongitude tinyint [ not null ]
-	MaxLongitude tinyint [ not null ]
-	RequiresCapitalLetters tinyint [ not null ]
-	RequiresNumbers tinyint [ not null ]
-	RequiresSymbols tinyint [ not null ]
-	ExpirationDays tinyint [ not null ]
 }
 
 Table SessionProfile [headercolor: #175e7a] {

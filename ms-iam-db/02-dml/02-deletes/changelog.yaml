@@ -1,11 +1,1 @@
 databaseChangeLog:
-
-  - changeSet:
-      id: 7c9a4e2b-3f1a-4c8e-9d2b-1e5f6a7b8c9d
-      author: School Guardian
-      changes:
-        - sqlFile:
-            path: 001-delete-auditor-seeds.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
