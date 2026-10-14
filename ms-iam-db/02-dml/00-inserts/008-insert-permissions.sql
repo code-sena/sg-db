@@ -17,4 +17,6 @@ VALUES
 ('boarding.manage', 'Register boarding events'),
 ('users.read', 'List users and roles'),
 ('users.manage', 'Create users and assign roles'),
-('reports.read', 'Access route and attendance reports');
+('reports.read', 'Access route and attendance reports'),
+('settings.manage', 'Update security settings and policies'),
+('audit.read', 'Read audit and error logs');

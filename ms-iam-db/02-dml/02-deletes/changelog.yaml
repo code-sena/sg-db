@@ -1,1 +1,21 @@
 databaseChangeLog:
+
+  - changeSet:
+      id: 7c9a4e2b-3f1a-4c8e-9d2b-1e5f6a7b8c9d
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 001-delete-auditor-seeds.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 8f3c1d2e-4b5a-4c6d-8e7f-9a0b1c2d3e4f
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 002-delete-settings-seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

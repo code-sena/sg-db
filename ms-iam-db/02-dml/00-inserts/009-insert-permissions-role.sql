@@ -1,4 +1,4 @@
--- Asignacion de los 18 permisos a roles (los RolesId se resuelven por nombre para no depender de IDs).
+-- Asignacion de los 20 permisos a roles (los RolesId se resuelven por nombre para no depender de IDs).
 INSERT INTO Iam.PermissionsRole (PermissionsId, RoleId)
 VALUES
 (1, (SELECT Id FROM Iam.Role WHERE Name = 'Admin')),
@@ -18,4 +18,6 @@ VALUES
 (15, (SELECT Id FROM Iam.Role WHERE Name = 'Inspector')),
 (16, (SELECT Id FROM Iam.Role WHERE Name = 'Admin')),
 (17, (SELECT Id FROM Iam.Role WHERE Name = 'Admin')),
-(18, (SELECT Id FROM Iam.Role WHERE Name = 'RouteAnalyst'));
+(18, (SELECT Id FROM Iam.Role WHERE Name = 'RouteAnalyst')),
+(19, (SELECT Id FROM Iam.Role WHERE Name = 'Admin')),
+(20, (SELECT Id FROM Iam.Role WHERE Name = 'Auditor'));
