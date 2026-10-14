@@ -1,3 +1,15 @@
+x-liquibase: &liquibase
+  image: liquibase/liquibase:4.29
+  restart: "no"
+  environment:
+    LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+    LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
+    LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
+  volumes:
+    - ${SCHOOL_GUARDIAN_DB_DIR:-.}:/db
+  networks:
+    - sg-services-network
+
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -8,7 +20,10 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      - school-guardian-sqlserver-data:/var/lib/mssql/data
+      # SQL Server stores everything under /var/opt/mssql (data, log, secrets).
+      # Mounting anywhere else (e.g. /var/lib/mssql/data) leaves the real data
+      # in the container's writable layer, so `docker compose down` wipes the DB.
+      - school-guardian-sqlserver-data:/var/opt/mssql
     healthcheck:
       test:
         [
@@ -44,183 +59,38 @@ services:
     networks:
       - sg-services-network
 
-  liquibase-iam:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-iam
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-iam-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-school:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
+  # ---------------------------------------------------------------------------
+  # Liquibase bootstrap, split into three globally ordered phases.
+  #
+  # The schema has cross-schema foreign keys (iam <-> school, iam <->
+  # user-management, fleet/route/notification -> ...) and the seed data has
+  # cross-schema row references, so a single ordered pass per service cannot
+  # work (it is circular). See bootstrap/*.sh for the details.
+  # ---------------------------------------------------------------------------
 
-  liquibase-fleet:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-fleet
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-fleet-db:/workspace
-    networks:
-      - sg-services-network
+  liquibase-tables:
+    <<: *liquibase
+    container_name: school-guardian-db-tables
     depends_on:
       sqlserver-init:
         condition: service_completed_successfully
-      liquibase-gps:
-        condition: service_completed_successfully
-      liquibase-school:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
+    entrypoint: ["/bin/bash", "/db/bootstrap/01-tables.sh"]
 
-  liquibase-geographic:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-geographic
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-geographic-db:/workspace
-    networks:
-      - sg-services-network
+  liquibase-constraints:
+    <<: *liquibase
+    container_name: school-guardian-db-constraints
     depends_on:
-      sqlserver-init:
+      liquibase-tables:
         condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
+    entrypoint: ["/bin/bash", "/db/bootstrap/02-constraints.sh"]
 
-  liquibase-gps:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-gps
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-gps-db:/workspace
-    networks:
-      - sg-services-network
+  liquibase-data:
+    <<: *liquibase
+    container_name: school-guardian-db-data
     depends_on:
-      sqlserver-init:
+      liquibase-constraints:
         condition: service_completed_successfully
-      liquibase-geographic:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
-  liquibase-notification:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-notification
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-notification-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-      liquibase-route:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
-  liquibase-route:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-route
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-route-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-geographic:
-        condition: service_completed_successfully
-      liquibase-school:
-        condition: service_completed_successfully
-      liquibase-fleet:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
-  liquibase-school:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-school
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-school-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-geographic:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
-
-  liquibase-user-management:
-    image: liquibase/liquibase:4.29
-    container_name: liquibase-user-management
-    environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
-      LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
-      LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
-    volumes:
-      - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-user-management-db:/workspace
-    networks:
-      - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
-      liquibase-iam:
-        condition: service_completed_successfully
-    command: >
-      --searchPath=/workspace
-      --changeLogFile=changelog/changelog-master.yaml
-      update
+    entrypoint: ["/bin/bash", "/db/bootstrap/03-data.sh"]
 
 volumes:
   school-guardian-sqlserver-data:
