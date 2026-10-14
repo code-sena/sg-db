@@ -6,14 +6,6 @@ databaseChangeLog:
       contextFilter: 01-dml
       labels: 00-inserts
 
-  # Relation seeds (families / members / licences). They reference Iam.Profile,
-  # so they run in a later phase than 00-inserts (see bootstrap/03-data.sh).
-  - include:
-      file: 05-relations/changelog.yaml
-      relativeToChangelogFile: true
-      contextFilter: 01-dml
-      labels: 05-relations
-
   - include:
       file: 01-updates/changelog.yaml
       relativeToChangelogFile: true
