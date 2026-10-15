@@ -8,7 +8,10 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      - school-guardian-sqlserver-data:/var/lib/mssql/data
+      # SQL Server stores everything under /var/opt/mssql (data, log, secrets).
+      # Mounting anywhere else (e.g. /var/lib/mssql/data) leaves the real data
+      # outside the volume, so every container recreate starts on an empty instance.
+      - school-guardian-sqlserver-data:/var/opt/mssql
     healthcheck:
       test:
         [
