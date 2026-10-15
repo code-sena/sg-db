@@ -199,3 +199,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000021
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 021-insert-permissions-role-admin-superadmin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
