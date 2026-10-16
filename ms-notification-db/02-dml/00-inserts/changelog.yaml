@@ -49,3 +49,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: ae08c957-eea8-4b6d-af28-8513e7e96b4f
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-incident-alert-types.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

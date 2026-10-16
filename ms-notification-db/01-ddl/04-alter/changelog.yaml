@@ -29,3 +29,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 97c8965e-9016-45ef-97b1-b77c3f24ecf8
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 004-widen-alert-description.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
