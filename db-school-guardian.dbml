@@ -127,7 +127,7 @@ Table Alert [headercolor: #175e7a] {
 	AlertTypeId tinyint [not null, ref: > AlertType.Id]
 	ProfileId uuid [ not null, ref: > Profile.Id]
 	DateTime datetime2 [ not null ]
-	Description varchar(100)
+	Description varchar(500)
 	AcknowledgedAt datetime2 [ null ]
 }
 
