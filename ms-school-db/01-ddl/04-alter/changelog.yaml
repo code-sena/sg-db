@@ -29,3 +29,23 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 94b36335-18c4-4973-95af-2a6d068d1ad8
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 005-add-school-location.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: abf2f8bc-f2b5-481b-a05d-76e2ccf1db5e
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 006-widen-school-phone.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
