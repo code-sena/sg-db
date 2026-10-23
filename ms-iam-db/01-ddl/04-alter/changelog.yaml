@@ -49,3 +49,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: ac16eec2-8062-4874-bf4b-0fcc94c52c01
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 007-add-fk-refresh-token.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

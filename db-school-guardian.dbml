@@ -4,6 +4,7 @@ TableGroup Iam [color: #e74c3c] {
     Profile
     Role
     SessionProfile
+    RefreshToken
 }
 
 TableGroup UserManagement [color: #3498db] {
@@ -337,6 +338,16 @@ Table SessionProfile [headercolor: #175e7a] {
 	DateEnd datetime2 [ not null ]
 	IPAddress varchar(50) [ not null ]
 	StatusSession varchar(50) [ not null ]
+}
+
+Table RefreshToken [headercolor: #175e7a] {
+	Id bigint [ pk, increment, not null ]
+	SessionProfileId int [ not null, ref: > SessionProfile.ID ]
+	TokenHash char(64) [ not null, unique ]
+	CreatedAt datetime2 [ not null ]
+	ExpiresAt datetime2 [ not null ]
+	RevokedAt datetime2 [ null ]
+	ReplacedByTokenId bigint [ null, ref: > RefreshToken.Id ]
 }
 
 Table Audit [headercolor: #175e7a] {
