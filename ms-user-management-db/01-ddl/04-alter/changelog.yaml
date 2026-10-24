@@ -19,3 +19,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 70e5808d-7e47-4e2e-8063-ba2bb43ddd33
+      author: Sharik Rojas
+      changes:
+        - sqlFile:
+            path: 003-add-fk-profile-person.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

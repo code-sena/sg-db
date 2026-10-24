@@ -51,6 +51,16 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
+      id: e58db8d9-e633-4d5e-9a9d-ae502fbf6218
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 006-add-fk-terms-acceptance.sql
+            relativeToChangelogFile: true
+            splitStatements: true 
+            stripComments: true
+            
+  - changeSet:
       id: ac16eec2-8062-4874-bf4b-0fcc94c52c01
       author: School Guardian
       changes:

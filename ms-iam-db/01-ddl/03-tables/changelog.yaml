@@ -51,6 +51,16 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
+      id: 07ab8227-22c3-4850-a698-adc1919c6f79
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 006-create-table-terms-acceptance.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            
+  - changeSet:
       id: 779f4525-2cda-4541-803d-d42347e1567a
       author: School Guardian
       changes:

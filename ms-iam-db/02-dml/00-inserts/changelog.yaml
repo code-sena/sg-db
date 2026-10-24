@@ -109,3 +109,103 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000033
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 012-insert-persons-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000034
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 013-insert-profiles-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000035
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 014-insert-school-admins.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5eccb1ac-33f0-419a-95ee-8ccf37f80014
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 015-insert-eco-persons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4cb67f9a-17b3-41f4-9d1b-1bbedb28e4b6
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 016-insert-eco-profiles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ee678d48-9d6d-4f49-8fff-b2dff8613114
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 017-insert-terms-acceptances.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4aaf286a-5a6b-429a-84d6-4e6697ed45eb
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 018-insert-school-admins-batch-eco.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: e615d427-344d-4630-95d6-faa2570bc167
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 019-insert-legacy-terms-acceptances.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000020
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 020-insert-permissions-role-base-roles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000021
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 021-insert-permissions-role-admin-superadmin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

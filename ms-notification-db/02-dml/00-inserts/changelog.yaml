@@ -39,3 +39,23 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: a2bf3d5c-36ea-448b-8c7b-5561e1e4c0b6
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 005-insert-device-tokens.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ae08c957-eea8-4b6d-af28-8513e7e96b4f
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-incident-alert-types.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

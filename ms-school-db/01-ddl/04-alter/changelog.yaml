@@ -21,21 +21,31 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
-      id: d941c3c8-6506-4db1-b481-c61c6aae71cf
-      author: Juan Chala
-      changes:
-        - sqlFile:
-            path: 003-add-fk-course.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
-
-  - changeSet:
       id: 7b1c4e90-2f8d-4a65-9c3e-15d0f6b28e41
       author: School Guardian
       changes:
         - sqlFile:
             path: 004-add-fk-school-admin.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 94b36335-18c4-4973-95af-2a6d068d1ad8
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 005-add-school-location.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: abf2f8bc-f2b5-481b-a05d-76e2ccf1db5e
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 006-widen-school-phone.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true

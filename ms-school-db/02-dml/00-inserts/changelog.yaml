@@ -21,11 +21,22 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
-      id: 5e000000-0000-4000-8000-000000000004
-      author: Juan Chala
+      id: a5b826f4-5367-4cdb-aff6-281de2b0abaf
+      author: School Guardian
       changes:
         - sqlFile:
-            path: 003-insert-courses.sql
+            path: 004-insert-schools-batch-eco.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 630aa758-2916-499f-b824-d6bf1be55f05
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 005-insert-school-campuses-batch-eco.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
