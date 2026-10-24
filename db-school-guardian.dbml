@@ -5,6 +5,7 @@ TableGroup Iam [color: #e74c3c] {
     Role
     SessionProfile
     TermsAcceptance
+    RefreshToken
 }
 
 TableGroup UserManagement [color: #3498db] {
@@ -303,7 +304,27 @@ Table SessionProfile [headercolor: #175e7a] {
 	DateStart datetime2 [ not null ]
 	DateEnd datetime2 [ not null ]
 	IPAddress varchar(50) [ not null ]
-	StatusSession StatusSession [ not null, default: 'Active' ]
+	StatusSession varchar(50) [ not null ]
+}
+
+Table RefreshToken [headercolor: #175e7a] {
+	Id bigint [ pk, increment, not null ]
+	SessionProfileId int [ not null, ref: > SessionProfile.ID ]
+	TokenHash char(64) [ not null, unique ]
+	CreatedAt datetime2 [ not null ]
+	ExpiresAt datetime2 [ not null ]
+	RevokedAt datetime2 [ null ]
+	ReplacedByTokenId bigint [ null, ref: > RefreshToken.Id ]
+}
+
+Table Audit [headercolor: #175e7a] {
+	Id bigint [ pk, increment, not null ]
+	ProfileId uuid [not null, ref: > Profile.Id]
+	Action varchar(255) [ not null ]
+	Date datetime2 [ not null ]
+	Description varchar(500) [ not null ]
+	IPAddress varchar(50) [ not null ]
+	Application varchar(255) [ not null ]
 }
 
 Table PermissionsRole [headercolor: #175e7a] {
