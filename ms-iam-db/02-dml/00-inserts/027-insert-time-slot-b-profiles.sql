@@ -1,0 +1,7 @@
+-- Segundo juego de prueba para la franja 06:00-08:00 (hora de Bogota).
+-- PasswordHash: bcrypt (rounds=10) del IdentificationNumber de cada persona. Sede Principal de la Institucion Sabana.
+INSERT INTO Iam.Profile (Id, PersonId, CampuseId, PasswordHash, RoleId, Status)
+VALUES
+('9B100017-0000-4000-8000-000000000017', '9A100017-0000-4000-8000-000000000017', 'A3000001-0000-4000-8000-000000000001', '$2a$10$4xCCTwG7XL7zhPNqwpVEeuiXAj4KMkT77T7azrwa26KDk7u78l2ya', (SELECT Id FROM Iam.Role WHERE Name = 'Driver'), 'Active'),
+('9B100027-0000-4000-8000-000000000027', '9A100027-0000-4000-8000-000000000027', 'A3000001-0000-4000-8000-000000000001', '$2a$10$UanbyUfUDKyKC39StrQI.ehO8mVmm0DkcOODZk9RmQKwCIkSfuKwy', (SELECT Id FROM Iam.Role WHERE Name = 'Parent'), 'Active'),
+('9B100037-0000-4000-8000-000000000037', '9A100037-0000-4000-8000-000000000037', 'A3000001-0000-4000-8000-000000000001', '$2a$10$SONUgMLsVNPTTXPf3SQG9OTNXJUigOXIR4.N3u1NyN1aTndXUt222', (SELECT Id FROM Iam.Role WHERE Name = 'Student'), 'Active');
