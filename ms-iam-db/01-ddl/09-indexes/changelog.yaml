@@ -19,3 +19,13 @@ databaseChangeLog:
               relativeToChangelogFile: true
               splitStatements: true
               stripComments: true
+
+  - changeSet:
+        id: a07ca712-dcca-47a9-aaf0-320e4655d768
+        author: School Guardian
+        changes:
+          - sqlFile:
+              path: 003-idx-table-refresh-token.sql
+              relativeToChangelogFile: true
+              splitStatements: true
+              stripComments: true
