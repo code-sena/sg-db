@@ -69,3 +69,43 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000040
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 020-insert-saturday-routes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000041
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 021-insert-saturday-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000042
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 022-insert-neiva-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000043
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 023-insert-neiva-route-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

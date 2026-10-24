@@ -21,6 +21,26 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
+      id: 5e000000-0000-4000-8000-000000000004
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 006-insert-neiva-school.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000050
+      author: Juan Chala
+      changes:
+        - sqlFile:
+            path: 007-insert-neiva-campuses.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
       id: a5b826f4-5367-4cdb-aff6-281de2b0abaf
       author: School Guardian
       changes:
