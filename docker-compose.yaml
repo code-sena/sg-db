@@ -1,57 +1,57 @@
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: school-guardian-db-dev
-    environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
-    ports:
-      - "1433:1433"
-    volumes:
-      # SQL Server stores everything under /var/opt/mssql (data, log, secrets).
-      # Mounting anywhere else (e.g. /var/lib/mssql/data) leaves the real data
-      # outside the volume, so every container recreate starts on an empty instance.
-      - school-guardian-sqlserver-data:/var/opt/mssql
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "/opt/mssql-tools18/bin/sqlcmd -S localhost,1433 -d master -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q \"SELECT 1\""
-        ]
-      interval: 5s
-      timeout: 5s
-      retries: 20
-      start_period: 20s
-    networks:
-      - sg-services-network
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   container_name: school-guardian-db-dev
+  #   environment:
+  #     ACCEPT_EULA: "Y"
+  #     MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+  #   ports:
+  #     - "1433:1433"
+  #   volumes:
+  #     # SQL Server stores everything under /var/opt/mssql (data, log, secrets).
+  #     # Mounting anywhere else (e.g. /var/lib/mssql/data) leaves the real data
+  #     # outside the volume, so every container recreate starts on an empty instance.
+  #     - school-guardian-sqlserver-data:/var/opt/mssql
+  #   healthcheck:
+  #     test:
+  #       [
+  #         "CMD-SHELL",
+  #         "/opt/mssql-tools18/bin/sqlcmd -S localhost,1433 -d master -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q \"SELECT 1\""
+  #       ]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 20
+  #     start_period: 20s
+  #   networks:
+  #     - sg-services-network
 
-  sqlserver-init:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: school-guardian-db-init
-    environment:
-      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
-    depends_on:
-      sqlserver:
-        condition: service_healthy
-    command:
-      - /bin/bash
-      - -c
-      - >
-        /opt/mssql-tools18/bin/sqlcmd
-        -S sqlserver,1433
-        -U sa
-        -P "$$MSSQL_SA_PASSWORD"
-        -d master
-        -C
-        -Q "IF DB_ID(N'${MSSQL_DATABASE}') IS NULL BEGIN EXEC('CREATE DATABASE [${MSSQL_DATABASE}]'); PRINT 'Database ${MSSQL_DATABASE} created'; END ELSE BEGIN PRINT 'Database ${MSSQL_DATABASE} already exists'; END"
-    networks:
-      - sg-services-network
+  # sqlserver-init:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   container_name: school-guardian-db-init
+  #   environment:
+  #     MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+  #   depends_on:
+  #     sqlserver:
+  #       condition: service_healthy
+  #   command:
+  #     - /bin/bash
+  #     - -c
+  #     - >
+  #       /opt/mssql-tools18/bin/sqlcmd
+  #       -S sqlserver,1433
+  #       -U sa
+  #       -P "$$MSSQL_SA_PASSWORD"
+  #       -d master
+  #       -C
+  #       -Q "IF DB_ID(N'${MSSQL_DATABASE}') IS NULL BEGIN EXEC('CREATE DATABASE [${MSSQL_DATABASE}]'); PRINT 'Database ${MSSQL_DATABASE} created'; END ELSE BEGIN PRINT 'Database ${MSSQL_DATABASE} already exists'; END"
+  #   networks:
+  #     - sg-services-network
 
   liquibase-iam:
     image: liquibase/liquibase:4.29
     container_name: liquibase-iam
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -59,8 +59,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-school:
         condition: service_completed_successfully
     command: >
@@ -72,7 +70,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-fleet
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -80,8 +78,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-gps:
         condition: service_completed_successfully
       liquibase-school:
@@ -97,16 +93,13 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-geographic
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
       - ${SCHOOL_GUARDIAN_DB_DIR:-.}/ms-geographic-db:/workspace
     networks:
       - sg-services-network
-    depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
     command: >
       --searchPath=/workspace
       --changeLogFile=changelog/changelog-master.yaml
@@ -116,7 +109,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-gps
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -124,8 +117,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-geographic:
         condition: service_completed_successfully
     command: >
@@ -137,7 +128,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-notification
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -145,8 +136,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-iam:
         condition: service_completed_successfully
       liquibase-route:
@@ -160,7 +149,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-route
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -168,8 +157,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-geographic:
         condition: service_completed_successfully
       liquibase-school:
@@ -187,7 +174,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-school
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -195,8 +182,6 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-geographic:
         condition: service_completed_successfully
     command: >
@@ -208,7 +193,7 @@ services:
     image: liquibase/liquibase:4.29
     container_name: liquibase-user-management
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://sqlserver:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
+      LIQUIBASE_COMMAND_URL: jdbc:sqlserver://${MSSQL_HOST}:1433;databaseName=${MSSQL_DATABASE};encrypt=false;trustServerCertificate=true
       LIQUIBASE_COMMAND_USERNAME: ${MSSQL_USER}
       LIQUIBASE_COMMAND_PASSWORD: ${MSSQL_SA_PASSWORD}
     volumes:
@@ -216,17 +201,12 @@ services:
     networks:
       - sg-services-network
     depends_on:
-      sqlserver-init:
-        condition: service_completed_successfully
       liquibase-iam:
         condition: service_completed_successfully
     command: >
       --searchPath=/workspace
       --changeLogFile=changelog/changelog-master.yaml
       update
-
-volumes:
-  school-guardian-sqlserver-data:
 
 networks:
   sg-services-network:

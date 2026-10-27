@@ -60,3 +60,13 @@ databaseChangeLog:
             splitStatements: true
             stripComments: true
 
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000060
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 008-insert-sena-campus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+

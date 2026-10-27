@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000032
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 032-clean-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

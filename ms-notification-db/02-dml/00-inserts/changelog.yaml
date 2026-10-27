@@ -59,3 +59,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 3f9c2b41-8d57-4a6e-9c13-7b2e5d84a0f2
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 007-insert-boarding-alert-types.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
