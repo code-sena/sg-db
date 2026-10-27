@@ -19,3 +19,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000016
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 003-insert-sena-gps-device.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

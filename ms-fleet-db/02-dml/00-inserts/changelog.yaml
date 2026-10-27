@@ -39,3 +39,48 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000020
+      author: Juan Chala
+      validCheckSum: ANY
+      changes:
+        - sqlFile:
+            path: 020-insert-neiva-sena-bus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000021
+      author: Juan Chala
+      validCheckSum: ANY
+      changes:
+        - sqlFile:
+            path: 021-insert-neiva-sena-driver-assignment.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  # Los dos changesets anteriores ya estaban registrados en RDS con un contenido
+  # que no insertaba el bus D1000021. Se re-ejecutan de forma idempotente con
+  # nuevos ids para crear el bus y su asignacion de conductor.
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000022
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 020-insert-neiva-sena-bus.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000023
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 021-insert-neiva-sena-driver-assignment.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

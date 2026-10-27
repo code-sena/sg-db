@@ -89,3 +89,43 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000070
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 020-insert-neiva-sena-persons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000071
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 021-insert-neiva-sena-driver-license.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000072
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 022-insert-neiva-sena-family.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000073
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 023-insert-neiva-sena-family-members.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

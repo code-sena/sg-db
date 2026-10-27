@@ -109,3 +109,148 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000050
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 024-insert-sena-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000051
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 025-insert-sena-route-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000052
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 026-insert-sena-route-bus-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000053
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 027-insert-sena-route-schedules.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000054
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 028-insert-sena-route-stop-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000055
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 029-insert-sena-route-schedules-ida.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000056
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 030-insert-sena-route-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000060
+      author: School Guardian
+      validCheckSum: ANY
+      changes:
+        - sqlFile:
+            path: 031-insert-neiva-sena-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  # El changeset 060 quedó registrado en RDS con un contenido anterior que no
+  # creó esta ruta. Se vuelve a ejecutar con un id nuevo (el SQL es idempotente)
+  # antes de las asignaciones de bus/horarios/paradas.
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000065
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 031-insert-neiva-sena-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000061
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 032-insert-neiva-sena-route-bus-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000062
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 033-insert-neiva-sena-route-schedules.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000063
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 034-insert-neiva-sena-route-stops.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000064
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 035-insert-neiva-sena-route-student-assignments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  # Divide la ruta SENA Neiva en IDA (00:01-12:00) y VUELTA (12:01-00:00).
+  - changeSet:
+      id: 5e000000-0000-4000-8000-000000000066
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 036-split-neiva-sena-route-ida-vuelta.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
