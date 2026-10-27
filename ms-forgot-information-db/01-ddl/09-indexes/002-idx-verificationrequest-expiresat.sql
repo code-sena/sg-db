@@ -1,0 +1,2 @@
+CREATE INDEX idx_verificationrequest_expiresat
+ON ForgotInformation.VerificationRequest (ExpiresAt);

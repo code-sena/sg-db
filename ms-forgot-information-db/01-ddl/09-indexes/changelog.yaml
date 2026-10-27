@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: a1b2c3d4-0003-4e00-9a00-forgotidx01
+      author: Guardian Escolar
+      changes:
+        - sqlFile:
+            path: 001-idx-verificationrequest-profile-purpose-status.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: a1b2c3d4-0004-4e00-9a00-forgotidx02
+      author: Guardian Escolar
+      changes:
+        - sqlFile:
+            path: 002-idx-verificationrequest-expiresat.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

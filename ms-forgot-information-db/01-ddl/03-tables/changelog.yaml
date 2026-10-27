@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: a1b2c3d4-0002-4e00-9a00-forgottable01
+      author: Guardian Escolar
+      changes:
+        - sqlFile:
+            path: 001-create-table-verification-request.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
