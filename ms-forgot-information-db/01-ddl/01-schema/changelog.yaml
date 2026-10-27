@@ -1,0 +1,11 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: a1b2c3d4-0001-4e00-9a00-forgotschema01
+      author: Guardian Escolar
+      changes:
+        - sqlFile:
+            path: 001-create-schema-forgot-information.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
