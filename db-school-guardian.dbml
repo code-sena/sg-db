@@ -40,7 +40,7 @@ TableGroup Route [color: #f39c12] {
 	RouteExecution
 }
 
-TableGroup Bus [color: #9b59b6] {
+TableGroup Fleet [color: #9b59b6] {
     Bus
     Brand
     Model
@@ -55,20 +55,25 @@ TableGroup Notification [color: #1abc9c] {
 	DeviceToken
 }
 
+TableGroup ForgotInformation [color: #7f8c8d] {
+    ForgotInformation.VerificationRequest
+}
+
 Table Person [headercolor: #175e7a] {
 	Id uuid [ pk, not null ]
 	Name varchar(50) [ not null ]
 	LastName varchar(50) [ not null ]
-	IdentificationType Identificationtype [ not null, default: TI ]
+	IdentificationType Identificationtype [ not null, default: 'TI' ]
 	IdentificationNumber varchar(20) [ not null, unique ]
-	Email varchar(50) [ not null, unique ]
+	Email varchar(50) [ not null ]
 	Phone bigint [ not null ]
 	ResidenceAddress varchar(50) [ not null ]
 	DateBirth date [ not null ]
+	Status status [ not null, default: 'Active' ]
 }
 
 Table Role [headercolor: #175e7a] {
-	ID tinyint [ pk, not null ]
+	Id tinyint [ pk, increment, not null ]
 	Name varchar(20) [ not null, unique ]
 	Description varchar(100) [ not null ]
 	Status status [ not null, default: 'Active' ]
@@ -85,7 +90,7 @@ Table FamilyMember [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	FamilyId uuid [not null, ref: > Family.Id]
 	ProfileId uuid [not null, ref: > Profile.Id]
-	RelationshipType RelationshipType [ default: 'Parent' ]
+	RelationshipType RelationshipType [ not null, default: 'Parent' ]
 	// Note: RelationshipType can be Parent and Student
 	Status status [ not null, default: 'Active' ]
 }
@@ -95,11 +100,13 @@ Table School [headercolor: #175e7a] {
 	CityId uuid [not null, ref: > City.Id]
 	Logo varbinary(max) [ not null ]
 	Name varchar(30) [ not null ]
-	Address varchar(30) [ not null ]
-	Phone int [ not null ]
+	Address varchar(255) [ not null ]
+	Phone bigint [ not null ]
 	Email varchar(50) [ not null ]
 	Website varchar(100) [ null ]
 	Theme varchar(20) [ null ]
+	Latitude decimal(10,7) [ null ]
+	Longitude decimal(10,7) [ null ]
 	Status status [ not null, default: 'Active' ]
 }
 
@@ -109,10 +116,9 @@ Table Boarding [headercolor: #175e7a] {
 	ProfileId uuid [not null, ref: > Profile.Id]
 	RouteStopId uuid [not null, ref: > RouteStop.Id]
 	DateTime datetime2 [ not null ]
-	BoardingType BoardingType [ not null, default: ON_BOARD ]
+	BoardingType BoardingType [ not null, default: 'ON_BOARD' ]
 
-    Note: 'DateTime is automatically generated
-           BoardingType can be ON_BOARD or OFF_BOARD '
+    Note: 'DateTime is automatically generated; BoardingType can be ON_BOARD or OFF_BOARD'
 }
 
 Table AlertType [headercolor: #175e7a] {
@@ -133,7 +139,7 @@ Table Alert [headercolor: #175e7a] {
 }
 
 Table AlertRecipient [headercolor: #175e7a] {
-	ID uuid [ pk ]
+	Id uuid [ pk ]
 	AlertId uuid [not null, ref: > Alert.Id]
 	ProfileId uuid [not null, ref: > Profile.Id]
 	DateTimeRead datetime2 [ not null ]
@@ -141,7 +147,7 @@ Table AlertRecipient [headercolor: #175e7a] {
 
 Table DeviceToken [headercolor: #175e7a] {
 	Id uuid [ pk ]
-	ProfileId uuid [not null, ref: > Profile.Id]
+	ProfileId uuid [not null]
 	ExpoToken varchar(300) [ not null, unique ]
 	UpdatedAt datetime2 [ not null ]
 }
@@ -158,13 +164,13 @@ Table Bus [headercolor: #175e7a] {
 }
 
 Table Brand [headercolor: #175e7a] {
-	Id tinyint [ pk ]
+	Id tinyint [ pk, increment ]
 	Name varchar(30)
 	Status status [ not null, default: 'Active' ]
 }
 
 Table Model [headercolor: #175e7a] {
-	Id tinyint [ pk ]
+	Id tinyint [ pk, increment ]
 	BrandId tinyint [not null, ref: > Brand.Id]
 	Name varchar(30)
 	Status status [ not null, default: 'Active' ]
@@ -224,13 +230,13 @@ Table RouteSchedule [headercolor: #175e71] {
 }
 
 Table RouteExecution [headercolor: #875e71] {
-	ID uuid [ pk ]
-	// RouteScheduleId uuid [ not null, ref: > RouteSchedule.Id ]
+	Id uuid [ pk ]
 	BusId uuid [ not null, ref: > Bus.Id]
 	DriverId uuid [ not null, ref: > Profile.Id]
 	RouteId uuid [ null, ref: > Route.Id]
 	StartDateTime datetime2 [ not null ]
 	EndDateTime datetime2
+	Direction varchar(10) [ not null, default: 'Ida', note: 'Defined by SQL script 010, but that script is not included in the checked-in changelog; deployment is not guaranteed.' ]
 	Status status [ not null, default: 'Active' ]
 }
 
@@ -250,7 +256,7 @@ Table RouteBusAssignments [headercolor: #175e7a] {
 }
 
 Table DriverLicense [headercolor: #175e7a] {
-	ID uuid [ pk ]
+	Id uuid [ pk ]
 	ProfileId uuid [not null, ref: > Profile.Id]
 	LicenseNumber varchar(20) [ not null, unique ]
 	LicenseExpirationDate date [ not null ]
@@ -267,15 +273,15 @@ Table Profile [headercolor: #175e7a] {
 }
 
 Table GpsDevice [headercolor: #175e7a] {
-	ID uuid [ pk ]
+	Id uuid [ pk ]
 	Imei varchar(20) [ not null, unique ]
 	LastConnection datetime2 [ not null ]
 	GpsStatus bit [ not null ]
 }
 
 Table GpsLocation [headercolor: #175e7a] {
-	ID uuid [ pk ]
-	GpsDeviceID uuid [not null, ref: > GpsDevice.ID]
+	Id uuid [ pk ]
+	GpsDeviceId uuid [not null, ref: > GpsDevice.Id]
 	Latitude decimal(10,7) [ not null ]
 	Longitude decimal(10,7) [ not null ]
 	Speed decimal(8,2) [ not null ]
@@ -287,7 +293,9 @@ Table SchoolCampus [headercolor: #175e7a] {
 	Id uuid [ pk ]
 	SchoolId uuid [not null, ref: > School.Id]
 	Name varchar(30) [ not null ]
-	Address varchar(30) [ not null ]
+	Address varchar(255) [ not null ]
+	Latitude decimal(10,7) [ null ]
+	Longitude decimal(10,7) [ null ]
 	Status status [ not null, default: 'Active' ]
 }
 
@@ -299,8 +307,8 @@ Table SchoolAdmin [headercolor: #175e7a] {
 }
 
 Table SessionProfile [headercolor: #175e7a] {
-	ID int [ pk, increment, not null ]
-	ProfileID uuid [not null, ref: > Profile.ID]
+	Id int [ pk, increment, not null ]
+	ProfileId uuid [not null, ref: > Profile.Id]
 	DateStart datetime2 [ not null ]
 	DateEnd datetime2 [ not null ]
 	IPAddress varchar(50) [ not null ]
@@ -309,22 +317,12 @@ Table SessionProfile [headercolor: #175e7a] {
 
 Table RefreshToken [headercolor: #175e7a] {
 	Id bigint [ pk, increment, not null ]
-	SessionProfileId int [ not null, ref: > SessionProfile.ID ]
+	SessionProfileId int [ not null, ref: > SessionProfile.Id ]
 	TokenHash char(64) [ not null, unique ]
 	CreatedAt datetime2 [ not null ]
 	ExpiresAt datetime2 [ not null ]
 	RevokedAt datetime2 [ null ]
 	ReplacedByTokenId bigint [ null, ref: > RefreshToken.Id ]
-}
-
-Table Audit [headercolor: #175e7a] {
-	Id bigint [ pk, increment, not null ]
-	ProfileId uuid [not null, ref: > Profile.Id]
-	Action varchar(255) [ not null ]
-	Date datetime2 [ not null ]
-	Description varchar(500) [ not null ]
-	IPAddress varchar(50) [ not null ]
-	Application varchar(255) [ not null ]
 }
 
 Table PermissionsRole [headercolor: #175e7a] {
@@ -347,4 +345,33 @@ Table TermsAcceptance [headercolor: #175e7a] {
 	AcceptedAt datetime2 [ not null ]
 	IpAddress varchar(50) [ null ]
 	Channel varchar(20) [ not null, default: 'mobile' ]
+}
+
+Table ForgotInformation.VerificationRequest [headercolor: #175e7a] {
+	Id uniqueidentifier [ pk, not null ]
+	ProfileId uniqueidentifier [ not null ]
+	Purpose varchar(20) [ not null ]
+	Target varchar(100) [ not null ]
+	CodeHash varchar(255) [ not null ]
+	ResetTokenHash varchar(255) [ null ]
+	ExpiresAt datetime2 [ not null ]
+	AttemptCount tinyint [ not null, default: 0 ]
+	MaxAttempts tinyint [ not null, default: 5 ]
+	Status varchar(20) [ not null, default: 'Pending' ]
+	CreatedAt datetime2 [ not null, default: `GETUTCDATE()` ]
+	VerifiedAt datetime2 [ null ]
+	ConsumedAt datetime2 [ null ]
+	RequestIp varchar(50) [ not null ]
+
+	checks {
+		`Purpose IN ('PasswordReset', 'ChangePassword', 'ChangeEmail', 'ChangePhone')`
+		`Status IN ('Pending', 'Verified', 'Consumed', 'Expired', 'Locked')`
+	}
+
+	indexes {
+		(ProfileId, Purpose, Status) [ name: 'idx_verificationrequest_profile_purpose_status' ]
+		ExpiresAt [ name: 'idx_verificationrequest_expiresat' ]
+	}
+
+	Note: 'Liquibase DDL model; ProfileId has no declared FK. Runtime initializer uses nvarchar strings without these CHECK constraints or defaults; see README.'
 }

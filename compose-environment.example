@@ -1,0 +1,7 @@
+# Configuration-validation placeholders only; do not run migrations with this file.
+# For execution, provide an approved SQL Server host reachable from the containers.
+MSSQL_HOST=sqlserver.example.invalid
+MSSQL_DATABASE=school-guardian
+MSSQL_USER=replace-with-database-user
+MSSQL_SA_PASSWORD=replace-with-database-password
+SCHOOL_GUARDIAN_DB_DIR=.
