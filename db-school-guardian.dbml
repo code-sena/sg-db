@@ -202,6 +202,7 @@ Table Route [headercolor: #175e7a] {
 	TargetSector varchar(30) [ not null ]
 	StartTime time [ not null ]
 	EndTime time [ not null ]
+	DaysOfWeek json [ not null, default: '[]' ]
 	Status status [ not null, default: 'Active' ]
 }
 

@@ -3,5 +3,6 @@ CREATE TABLE Route.Route (
     CampuseId UNIQUEIDENTIFIER NOT NULL,
     Name VARCHAR(30) NOT NULL,
     TargetSector VARCHAR(30) NOT NULL,
+    DaysOfWeek NVARCHAR(MAX) NOT NULL CONSTRAINT DF_Route_Route_DaysOfWeek DEFAULT (N'[]'),
     Status VARCHAR(20) NOT NULL CHECK (Status IN ('Active', 'Inactive')) DEFAULT 'Active'
 );

@@ -1,5 +1,15 @@
 # sg-db
 
+## Route workday persistence
+
+The route service stores selected workdays as JSON text in
+`Route.Route.DaysOfWeek`. The fresh-install table definition includes the
+column, and `ms-route-db/01-ddl/04-alter/011-add-days-of-week-to-route.sql`
+adds it to existing databases with an empty-array default. The migration is
+registered in the route Liquibase changelog. Apply it through the target
+environment's approved Liquibase deployment before deploying the matching
+route-service version. This change has not been applied to a live database.
+
 ## Activacion manual de Oriente Centro
 
 `ms-route-db/02-dml/01-updates/002-activate-oriente-centro.sql` es una

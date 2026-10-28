@@ -89,3 +89,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: 30c072e5-5f5f-4efb-9a65-8e37ac6a0f4d
+      author: route-workdays-hotfix
+      changes:
+        - sqlFile:
+            path: 011-add-days-of-week-to-route.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
