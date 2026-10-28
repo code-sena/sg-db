@@ -49,3 +49,13 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+
+  - changeSet:
+      id: e476a525-e64c-4c41-aed0-50c0d46a159f
+      author: School Guardian
+      changes:
+        - sqlFile:
+            path: 007-widen-school-address.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
