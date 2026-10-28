@@ -1,5 +1,23 @@
 # sg-db
 
+## Activacion manual de Oriente Centro
+
+`ms-route-db/02-dml/01-updates/002-activate-oriente-centro.sql` es una
+migracion de datos manual y optativa: no esta incluida en el changelog
+automatico porque selecciona un registro propio del entorno por nombre.
+Ejecutarla solo en la base de datos de destino previamente verificada.
+
+Busca exactamente `oriente centro`, ignorando mayusculas y espacios exteriores.
+Exige una sola coincidencia; si no existe o hay duplicados, falla sin cambios.
+Dentro de una transaccion cambia exclusivamente `Route.Route.Status` a `Active`
+y devuelve ID, sede, nombre y estado para verificar el resultado. Puede
+repetirse si la ruta ya esta activa. No cambia horarios, relaciones con buses
+o paradas, ni habilita viajes fuera de la ventana programada.
+
+El archivo se preparo sin ejecutarlo en ninguna base de datos. No incluye una
+reversion automatica: volver a `Inactive` requiere comprobar el estado previo,
+porque la ruta podria haber estado activa antes de ejecutar este script.
+
 La migracion `ms-school-db/01-ddl/04-alter/005-add-school-location.sql` agrega
 `Latitude` y `Longitude` opcionales (`DECIMAL(10,7) NULL`) a `School.School` y
 `School.SchoolCampus`. Conserva las columnas existentes y no modifica registros.
