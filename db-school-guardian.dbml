@@ -6,6 +6,7 @@ TableGroup Iam [color: #e74c3c] {
     SessionProfile
     TermsAcceptance
     RefreshToken
+    LoginAttempts
 }
 
 TableGroup UserManagement [color: #3498db] {
@@ -323,6 +324,13 @@ Table RefreshToken [headercolor: #175e7a] {
 	ExpiresAt datetime2 [ not null ]
 	RevokedAt datetime2 [ null ]
 	ReplacedByTokenId bigint [ null, ref: > RefreshToken.Id ]
+}
+
+Table Iam.LoginAttempts [headercolor: #e74c3c] {
+	Id bigint [ pk, increment, not null ]
+	Email varchar(255) [ not null, unique ]
+	FailedAttempts int [ not null ]
+	LockedUntil datetime2 [ null ]
 }
 
 Table PermissionsRole [headercolor: #175e7a] {

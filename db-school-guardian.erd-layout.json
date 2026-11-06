@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "positions": {
+    "Role": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Profile": {
+      "dx": 0,
+      "dy": 0
+    },
+    "SessionProfile": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RefreshToken": {
+      "dx": 0,
+      "dy": 0
+    },
+    "PermissionsRole": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Permissions": {
+      "dx": 0,
+      "dy": 0
+    },
+    "TermsAcceptance": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Person": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Family": {
+      "dx": 0,
+      "dy": 0
+    },
+    "FamilyMember": {
+      "dx": 0,
+      "dy": 0
+    },
+    "DriverLicense": {
+      "dx": 0,
+      "dy": 0
+    },
+    "School": {
+      "dx": 0,
+      "dy": 0
+    },
+    "SchoolCampus": {
+      "dx": 0,
+      "dy": 0
+    },
+    "SchoolAdmin": {
+      "dx": 0,
+      "dy": 0
+    },
+    "City": {
+      "dx": 0,
+      "dy": 0
+    },
+    "GpsDevice": {
+      "dx": 0,
+      "dy": 0
+    },
+    "GpsLocation": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Stop": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Route": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RouteStudentAssignments": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RouteSchedule": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RouteExecution": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RouteStop": {
+      "dx": 0,
+      "dy": 0
+    },
+    "RouteBusAssignments": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Bus": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Brand": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Model": {
+      "dx": 0,
+      "dy": 0
+    },
+    "DriverAssignemts": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Boarding": {
+      "dx": 0,
+      "dy": 0
+    },
+    "AlertType": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Alert": {
+      "dx": 0,
+      "dy": 0
+    },
+    "AlertRecipient": {
+      "dx": 0,
+      "dy": 0
+    },
+    "DeviceToken": {
+      "dx": 0,
+      "dy": 0
+    },
+    "Audit": {
+      "dx": 0,
+      "dy": 0
+    }
+  },
+  "savedAt": "2026-10-27T20:04:16.343Z"
+}
